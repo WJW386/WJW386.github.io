@@ -21,28 +21,33 @@
     var CONFIG = {"hostname":"wjw386.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Willow&#39;s Archive">
-<meta property="og:url" content="http://wjw386.github.io/index.html">
+  <meta name="description" content="203. Remove Linked List ElementsLink: https:&#x2F;&#x2F;leetcode.com&#x2F;problems&#x2F;remove-linked-list-elements&#x2F; DescriptionGiven the head of a linked list and an integer val, remove all the nodes of the linked list">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode | 203. Remove Linked List Elements, 707. Design Linked List, 206. Reverse Linked List">
+<meta property="og:url" content="http://wjw386.github.io/2023/07/13/LeetCode%20203.%20Remove%20Linked%20List%20Elements,%20707.%20Design%20Linked%20List,%20206.%20Reverse%20Linked%20List/index.html">
 <meta property="og:site_name" content="Willow&#39;s Archive">
+<meta property="og:description" content="203. Remove Linked List ElementsLink: https:&#x2F;&#x2F;leetcode.com&#x2F;problems&#x2F;remove-linked-list-elements&#x2F; DescriptionGiven the head of a linked list and an integer val, remove all the nodes of the linked list">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-13T19:51:22.528Z">
+<meta property="article:modified_time" content="2023-07-13T20:04:13.560Z">
 <meta property="article:author" content="Willow Wu">
+<meta property="article:tag" content="Linked List">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://wjw386.github.io/">
+<link rel="canonical" href="http://wjw386.github.io/2023/07/13/LeetCode%20203.%20Remove%20Linked%20List%20Elements,%20707.%20Design%20Linked%20List,%20206.%20Reverse%20Linked%20List/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Willow's Archive</title>
+  <title>LeetCode | 203. Remove Linked List Elements, 707. Design Linked List, 206. Reverse Linked List | Willow's Archive</title>
   
 
 
@@ -173,9 +178,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
@@ -191,10 +197,9 @@
       <meta itemprop="name" content="Willow's Archive">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/07/13/LeetCode%20203.%20Remove%20Linked%20List%20Elements,%20707.%20Design%20Linked%20List,%20206.%20Reverse%20Linked%20List/" class="post-title-link" itemprop="url">LeetCode | 203. Remove Linked List Elements, 707. Design Linked List, 206. Reverse Linked List</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          LeetCode | 203. Remove Linked List Elements, 707. Design Linked List, 206. Reverse Linked List
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -227,7 +232,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="203-Remove-Linked-List-Elements"><a href="#203-Remove-Linked-List-Elements" class="headerlink" title="203. Remove Linked List Elements"></a>203. Remove Linked List Elements</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/remove-linked-list-elements/">https://leetcode.com/problems/remove-linked-list-elements/</a></p>
+        <h1 id="203-Remove-Linked-List-Elements"><a href="#203-Remove-Linked-List-Elements" class="headerlink" title="203. Remove Linked List Elements"></a>203. Remove Linked List Elements</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/remove-linked-list-elements/">https://leetcode.com/problems/remove-linked-list-elements/</a></p>
 <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given the <code>head</code> of a linked list and an integer <code>val</code>, remove all the nodes of the linked list that has <code>Node.val == val</code>, and return the new <code>head</code>.</p>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">removeElements</span><span class="params">(ListNode head, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">dummyHead</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ListNode</span>(-<span class="number">1</span>, head);</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">previous</span> <span class="operator">=</span> dummyHead;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">current</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="keyword">while</span> (current != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (current.val == val)&#123;</span><br><span class="line">                current = current.next;</span><br><span class="line">                previous.next = current;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                previous = current;</span><br><span class="line">                current = current.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummyHead.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Remark"><a href="#Remark" class="headerlink" title="Remark"></a>Remark</h2><ul>
@@ -266,230 +271,33 @@
 <hr>
 <p>Reference: <a target="_blank" rel="noopener" href="https://programmercarl.com/">https://programmercarl.com/</a></p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/Linked-List/" rel="tag"># Linked List</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/07/12/LeetCode%20977.Squares%20of%20a%20Sorted%20Array,%20209.%20Minimum%20Size%20Subarray%20Sum,%2059.%20Spiral%20Matrix%20II/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Willow Wu">
-      <meta itemprop="description" content="">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Willow's Archive">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/07/12/LeetCode%20977.Squares%20of%20a%20Sorted%20Array,%20209.%20Minimum%20Size%20Subarray%20Sum,%2059.%20Spiral%20Matrix%20II/" class="post-title-link" itemprop="url">LeetCode | 977.Squares of a Sorted Array, 209. Minimum Size Subarray Sum, 59. Spiral Matrix II</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2023-07-12 12:31:35 / Modified: 14:56:31" itemprop="dateCreated datePublished" datetime="2023-07-12T12:31:35-07:00">2023-07-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="977-Squares-of-a-Sorted-Array"><a href="#977-Squares-of-a-Sorted-Array" class="headerlink" title="977.Squares of a Sorted Array"></a>977.Squares of a Sorted Array</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/squares-of-a-sorted-array/">https://leetcode.com/problems/squares-of-a-sorted-array/</a></p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an integer array <code>nums</code> sorted in <strong>non-decreasing</strong> order, return <em>an array of</em> <em><strong>the squares of each number</strong></em> <em>sorted in non-decreasing order</em>.</p>
-<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><h3 id="Two-pointers"><a href="#Two-pointers" class="headerlink" title="Two pointers"></a>Two pointers</h3><ul>
-<li>Initialize two pointers: <code>left = 0</code>, <code>right = nums.length - 1</code>, and a result array.</li>
-<li>Compare <code>nums[left] * nums[left]</code> and <code>nums[right] * nums[right]</code> iteratively:<ul>
-<li>If <code>nums[left] * nums[left] &gt; nums[right] * nums[right]</code>, save <code>nums[left]</code> to the last empty position of result, <code>left++</code></li>
-<li>else, save <code>nums[right]</code> to the last empty position of result, <code>right--</code></li>
-</ul>
-</li>
-</ul>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] sortedSquares(<span class="type">int</span>[] nums) &#123;</span><br><span class="line">        <span class="type">int</span>[] result = <span class="keyword">new</span> <span class="title class_">int</span>[nums.length];</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> nums.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> nums[left] * nums[left];</span><br><span class="line">            <span class="type">int</span> <span class="variable">r</span> <span class="operator">=</span> nums[right] * nums[right];</span><br><span class="line">            <span class="keyword">if</span> (l &gt; r) &#123;</span><br><span class="line">                result[i] = l;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                result[i] = r;</span><br><span class="line">                right--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="209-Minimum-Size-Subarray-Sum"><a href="#209-Minimum-Size-Subarray-Sum" class="headerlink" title="209. Minimum Size Subarray Sum"></a>209. Minimum Size Subarray Sum</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/minimum-size-subarray-sum/">https://leetcode.com/problems/minimum-size-subarray-sum/</a></p>
-<h2 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h2><p>Given an array of positive integers <code>nums</code> and a positive integer <code>target</code>, return the <em><strong>minimal length</strong></em> of a <em>subarray whose sum is greater than or equal</em> to <code>target</code>. If there is no such subarray, return <code>0</code> instead.</p>
-<h2 id="Approach-1"><a href="#Approach-1" class="headerlink" title="Approach"></a>Approach</h2><h3 id="Sliding-Window"><a href="#Sliding-Window" class="headerlink" title="Sliding Window"></a>Sliding Window</h3><ul>
-<li>Initialize a <code>left</code> pointer, point to the start of the array and track the current status.</li>
-<li>Initialize <code>sum</code> to track the sum of the elements in subarray and <code>result</code> to store the minimum length.</li>
-<li>Traversing the <code>nums</code> array in a for loop using pointer right:<ul>
-<li>Add <code>nums[right]</code> to <code>sum</code>.</li>
-<li>While <code>sum &gt; target</code>:<ul>
-<li>If <code>right - left + 1</code> (subarray length) is smaller than the result, set <code>result = right - left + 1</code>.</li>
-<li>remove the first element in subarray, to check whether the <code>sum</code> of the remain subarray is greater than or equal to <code>target</code>.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minSubArrayLen</span><span class="params">(<span class="type">int</span> target, <span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> Integer.MAX_VALUE;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> <span class="number">0</span>; right &lt; nums.length; right++) &#123;</span><br><span class="line">            sum += nums[right];</span><br><span class="line">            <span class="keyword">while</span>(sum &gt;= target) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">subLen</span> <span class="operator">=</span> right - left + <span class="number">1</span>;</span><br><span class="line">                result = Math.min(subLen, result);</span><br><span class="line">                sum -= nums[left++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result == Integer.MAX_VALUE ? <span class="number">0</span> : result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="59-Spiral-Matrix-II"><a href="#59-Spiral-Matrix-II" class="headerlink" title="59. Spiral Matrix II"></a>59. Spiral Matrix II</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/spiral-matrix-ii/">https://leetcode.com/problems/spiral-matrix-ii/</a></p>
-<h2 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h2><p>Given a positive integer <code>n</code>, generate an <code>n x n</code> <code>matrix</code> filled with elements from <code>1</code> to n^2^ in spiral order.</p>
-<h2 id="Approach-2"><a href="#Approach-2" class="headerlink" title="Approach"></a>Approach</h2><p><img src="/images/spiral_matrix.png"></p>
-<h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[][] generateMatrix(<span class="type">int</span> n) &#123;</span><br><span class="line">        <span class="type">int</span>[][] result = <span class="keyword">new</span> <span class="title class_">int</span>[n][n];</span><br><span class="line">        <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">loop</span> <span class="operator">=</span> n / <span class="number">2</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">offset</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (loop &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> x;</span><br><span class="line">            <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> y;</span><br><span class="line">            <span class="keyword">for</span> (j = y; j &lt; n - offset; j++)</span><br><span class="line">                result[i][j] = cnt++;</span><br><span class="line">            <span class="keyword">for</span> (i = x; i &lt; n - offset; i++)</span><br><span class="line">                result[i][j] = cnt++;</span><br><span class="line">            <span class="keyword">for</span> (; j &gt; y; j--)</span><br><span class="line">                result[i][j] = cnt++;</span><br><span class="line">            <span class="keyword">for</span> (; i &gt; x; i--)</span><br><span class="line">                result[i][j] = cnt++;</span><br><span class="line">            </span><br><span class="line">            x++;</span><br><span class="line">            y++;</span><br><span class="line">            offset++;</span><br><span class="line">            loop--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>)</span><br><span class="line">            result[n/<span class="number">2</span>][n/<span class="number">2</span>] = n * n;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Remark"><a href="#Remark" class="headerlink" title="Remark"></a>Remark</h2><p>Calculate the correct number of loop. And make sure to set the value to the middle of the matrix when <code>n</code> is odd.</p>
-<hr>
-<p>Reference: <a target="_blank" rel="noopener" href="https://programmercarl.com/">https://programmercarl.com/</a></p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/07/12/LeetCode%20977.Squares%20of%20a%20Sorted%20Array,%20209.%20Minimum%20Size%20Subarray%20Sum,%2059.%20Spiral%20Matrix%20II/" rel="prev" title="LeetCode | 977.Squares of a Sorted Array, 209. Minimum Size Subarray Sum, 59. Spiral Matrix II">
+      <i class="fa fa-chevron-left"></i> LeetCode | 977.Squares of a Sorted Array, 209. Minimum Size Subarray Sum, 59. Spiral Matrix II
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/07/11/LeetCode%20704.%20Binary%20Search,%2027.%20Remove%20Element/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Willow Wu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Willow's Archive">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/07/11/LeetCode%20704.%20Binary%20Search,%2027.%20Remove%20Element/" class="post-title-link" itemprop="url">LeetCode | 704. Binary Search, 27. Remove Element</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2023-07-11 13:40:28 / Modified: 13:38:33" itemprop="dateCreated datePublished" datetime="2023-07-11T13:40:28-07:00">2023-07-11</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="704-Binary-Search"><a href="#704-Binary-Search" class="headerlink" title="704. Binary Search"></a>704. Binary Search</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/binary-search/">https://leetcode.com/problems/binary-search/</a><br>Reference: <a target="_blank" rel="noopener" href="https://programmercarl.com/0704.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html">https://programmercarl.com/0704.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html</a></p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of integers <code>nums</code> which is sorted in ascending order, and an integer <code>target</code>, write a function to search <code>target</code> in <code>nums</code>. If <code>target</code> exists, then return its index. Otherwise, return <code>-1</code>.</p>
-<p>You must write an algorithm with <code>O(log n)</code> runtime complexity.</p>
-<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><h3 id="Binary-Search"><a href="#Binary-Search" class="headerlink" title="Binary Search"></a>Binary Search</h3><ul>
-<li>Initialize the left and right pointer, which corresponds to the start and end of<br>the pointer.</li>
-<li>While <code>nums[left] &lt; nums[right]</code>:<ul>
-<li>Calculate the middle index: <code>middle = left + (right - left) / 2</code>. It can avoid the overflow problem.   </li>
-<li>if <code>nums[middle] == target</code>: Return middle.</li>
-<li>If <code>nums[middle] &lt; target</code>: Set <code>left = middle + 1</code>.</li>
-<li>If <code>nums[middle] &gt; target</code>: Set <code>right = middle - 1</code></li>
-</ul>
-</li>
-<li>If the target is not found, return -1.</li>
-</ul>
-<h2 id="Solutions"><a href="#Solutions" class="headerlink" title="Solutions"></a>Solutions</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">search</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums[right] &lt; target || nums[left] &gt; target)</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">        	<span class="comment">//(left + right) / 2 can cause overflow problem</span></span><br><span class="line">            mid = left + (right - left) / <span class="number">2</span>;  </span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target)</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target)</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">search</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums[right - <span class="number">1</span>] &lt; target || nums[left] &gt; target)</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">            mid = left + (right - left) / <span class="number">2</span>; </span><br><span class="line">            System.out.println(mid);</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target)</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target)</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                right = mid;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Remark"><a href="#Remark" class="headerlink" title="Remark"></a>Remark</h2><p>Be careful of the boundary.</p>
-<h1 id="27-Remove-Element"><a href="#27-Remove-Element" class="headerlink" title="27. Remove Element"></a>27. Remove Element</h1><p> Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/remove-element/">https://leetcode.com/problems/remove-element/</a><br> Reference: <a target="_blank" rel="noopener" href="https://programmercarl.com/0027.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.html">https://programmercarl.com/0027.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.html</a></p>
-<h2 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h2><p> Given an integer array <code>nums</code> and an integer <code>val</code>, remove all occurrences of <code>val</code> in <code>nums</code> <font color=blue>in-place</font>. The order of the elements may be changed. Then return the number of elements in <code>nums</code> which are not equal to <code>val</code>.</p>
-<p>Consider the number of elements in <code>nums</code> which are not equal to <code>val</code> be <code>k</code>, to get accepted, you need to do the following things:</p>
-<ul>
-<li>Change the array nums such that the first <code>k</code> elements of <code>nums</code> contain<br>the elements which are not equal to <code>val</code>. The remaining elements of<br><code>nums</code> are not important as well as the size of <code>nums</code>.</li>
-<li>Return <code>k</code>.</li>
-</ul>
-<h2 id="Approach-1"><a href="#Approach-1" class="headerlink" title="Approach"></a>Approach</h2><h3 id="Two-pointers"><a href="#Two-pointers" class="headerlink" title="Two pointers"></a>Two pointers</h3><ul>
-<li>Initialize a fast pointer and a slow pointer. The fast pointer is used to find element does not equal to <code>k</code>. The slow pointer is used to update <code>nums</code>.</li>
-<li>Iterate over <code>nums</code>, check whether <code>nums[fast] = val</code><ul>
-<li>If <code>nums[fast] != val</code>, set <code>nums[slow] = nums[fast]</code></li>
-<li>If <code>nums[fast] == val</code>, skip this element</li>
-<li><code>slow++</code>, point slow to the next update position</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>Return <code>slow</code>, which represents the length of the non-target array.</li>
-</ul>
-<h2 id="Solutions-1"><a href="#Solutions-1" class="headerlink" title="Solutions"></a>Solutions</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeElement</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">fast</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">slow</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (fast = <span class="number">0</span>; fast &lt; nums.length; fast++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[fast] != val)</span><br><span class="line">                nums[slow++] = nums[fast];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeElement</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="keyword">while</span> (left &lt;= right &amp;&amp; nums[left] != val)</span><br><span class="line">                left++;</span><br><span class="line">            <span class="keyword">while</span> (right &gt;= left &amp;&amp; nums[right] == val)</span><br><span class="line">                right--;</span><br><span class="line">            <span class="keyword">if</span> (left &lt; right)</span><br><span class="line">                nums[left++] = nums[right--];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -542,6 +350,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#203-Remove-Linked-List-Elements"><span class="nav-number">1.</span> <span class="nav-text">203. Remove Linked List Elements</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">1.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Remark"><span class="nav-number">1.3.</span> <span class="nav-text">Remark</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#707-Design-Linked-List"><span class="nav-number">2.</span> <span class="nav-text">707. Design Linked List</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description-1"><span class="nav-number">2.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-1"><span class="nav-number">2.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Remark-1"><span class="nav-number">2.3.</span> <span class="nav-text">Remark</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#206-Reverse-Linked-List"><span class="nav-number">3.</span> <span class="nav-text">206. Reverse Linked List</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description-2"><span class="nav-number">3.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Approach"><span class="nav-number">3.2.</span> <span class="nav-text">Approach</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Two-pointers"><span class="nav-number">3.2.1.</span> <span class="nav-text">Two pointers</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-2"><span class="nav-number">3.3.</span> <span class="nav-text">Solution</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
