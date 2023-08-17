@@ -179,6 +179,85 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/08/16/LeetCode%20738.%20Monotone%20Increasing%20Digits/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Willow Wu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Willow's Archive">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/16/LeetCode%20738.%20Monotone%20Increasing%20Digits/" class="post-title-link" itemprop="url">LeetCode | 738. Monotone Increasing Digits</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-08-16 21:53:20 / Modified: 21:54:14" itemprop="dateCreated datePublished" datetime="2023-08-16T21:53:20-07:00">2023-08-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="738-Monotone-Increasing-Digits"><a href="#738-Monotone-Increasing-Digits" class="headerlink" title="738. Monotone Increasing Digits"></a>738. Monotone Increasing Digits</h1><p>LInk: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/monotone-increasing-digits/">https://leetcode.com/problems/monotone-increasing-digits/</a></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>An integer has <strong>monotone increasing digits</strong> if and only if each pair of adjacent digits <code>x</code> and <code>y</code> satisfy <code>x &lt;= y</code>.</p>
+<p>Given an integer <code>n</code>, return <em>the largest number that is less than or equal to <code>n</code> with <strong>monotone increasing digits</strong></em>.</p>
+<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><ul>
+<li>Split the integer <code>n</code> into digits.</li>
+<li>Loop the digits from end to start:<ul>
+<li>If the current digit smaller than the previous digit, decrement the previous digits and save the index of the current digit.</li>
+</ul>
+</li>
+<li>Loop the digits from the saved index to the end, let the digit equal to 9.</li>
+</ul>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">monotoneIncreasingDigits</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        String[] nums = (n + <span class="string">&quot;&quot;</span>).split(<span class="string">&quot;&quot;</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> nums.length;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> nums.length - <span class="number">1</span>; i &gt; <span class="number">0</span>; i --) &#123;</span><br><span class="line">            <span class="keyword">if</span> (Integer.parseInt(nums[i - <span class="number">1</span>]) &gt; Integer.parseInt(nums[i])) &#123;</span><br><span class="line">                start = i;</span><br><span class="line">                nums[i - <span class="number">1</span>] = (Integer.parseInt(nums[i - <span class="number">1</span>]) - <span class="number">1</span>) + <span class="string">&quot;&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> start; i &lt; nums.length; i++) &#123;</span><br><span class="line">            nums[i] = <span class="string">&quot;9&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Integer.parseInt(String.join(<span class="string">&quot;&quot;</span>, nums));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/08/15/LeetCode%20435.%20Non-overlapping%20Intervals,%20763.%20Partition%20Labels,%2056.%20Merge%20Intervals/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -301,7 +380,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2023/08/14/LeetCode%20860.%20Lemonade%20Change,%20406.%20Queue%20Reconstruction%20by%20Height,%20452.%20Minimum%20Number%20of%20Arrows/" class="post-title-link" itemprop="url">LeetCode | LeetCode | 860. Lemonade Change, 406. Queue Reconstruction by Height, 452. Minimum Number of Arrows to Burst Balloons</a>
+            <a href="/2023/08/14/LeetCode%20860.%20Lemonade%20Change,%20406.%20Queue%20Reconstruction%20by%20Height,%20452.%20Minimum%20Number%20of%20Arrows/" class="post-title-link" itemprop="url">LeetCode | 860. Lemonade Change, 406. Queue Reconstruction by Height, 452. Minimum Number of Arrows to Burst Balloons</a>
         </h2>
 
         <div class="post-meta">
@@ -310,10 +389,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2023-08-14 20:52:46 / Modified: 20:54:44" itemprop="dateCreated datePublished" datetime="2023-08-14T20:52:46-07:00">2023-08-14</time>
+              <time title="Created: 2023-08-14 20:52:46" itemprop="dateCreated datePublished" datetime="2023-08-14T20:52:46-07:00">2023-08-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-08-16 21:54:33" itemprop="dateModified" datetime="2023-08-16T21:54:33-07:00">2023-08-16</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -1196,96 +1281,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/08/03/LeetCode%2077.%20Combinations/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Willow Wu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Willow's Archive">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/08/03/LeetCode%2077.%20Combinations/" class="post-title-link" itemprop="url">LeetCode | 77. Combinations</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2023-08-03 13:34:25 / Modified: 13:36:43" itemprop="dateCreated datePublished" datetime="2023-08-03T13:34:25-07:00">2023-08-03</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="77-Combinations"><a href="#77-Combinations" class="headerlink" title="77. Combinations"></a>77. Combinations</h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given two integers <code>n</code> and <code>k</code>, return <em>all possible combinations of k numbers chosen from the range <code>[1, n]</code></em>.</p>
-<p>You may return the answer in <strong>any order</strong>.</p>
-<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><h3 id="BackTracking"><a href="#BackTracking" class="headerlink" title="BackTracking"></a>BackTracking</h3><p><img src="/images/77.png"></p>
-<ul>
-<li>Initialize two global parameters <code>result</code> (store the final result of combinations) and <code>path</code> (store the current combination).</li>
-<li>Intialize a recursive function with parameters <code>n</code>, <code>k</code> and <code>startIndex</code> (control the elements that can be included in the current combination).</li>
-<li>If the size of <code>path</code> equals to <code>k</code>, which means a combinations is found, add <code>path</code> to <code>result</code>.</li>
-<li>Loop from <code>startIndex</code> to <code>n - (k - path.size()) + 1</code> (ensures that the loop doesn’t go beyond the maximum possible value for a valid combination with the current elements):<ul>
-<li>add the current loop index to <code>path</code>.</li>
-<li>Recursively call the function with <code>startIndex + 1 </code></li>
-<li>Remove the last integer in <code>path</code> to backtrack.</li>
-</ul>
-</li>
-</ul>
-<h2 id="Soltuion"><a href="#Soltuion" class="headerlink" title="Soltuion"></a>Soltuion</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    List&lt;Integer&gt; path = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">combine</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        backTracking(n, k, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">backTracking</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> k, <span class="type">int</span> startIndex)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (path.size() == k) &#123;</span><br><span class="line">            result.add(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(path));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> startIndex; i &lt;= n - (k - path.size()) + <span class="number">1</span>; i++) &#123;</span><br><span class="line">            path.add(i);</span><br><span class="line">            backTracking(n, k, i + <span class="number">1</span>);</span><br><span class="line">            path.remove(path.size() -  <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<hr>
-<p>Reference: <a target="_blank" rel="noopener" href="https://programmercarl.com/">https://programmercarl.com/</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1351,7 +1350,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
