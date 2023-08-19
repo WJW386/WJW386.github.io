@@ -179,6 +179,118 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/08/18/LeetCode%20509.%20Fibonacci%20Number,%2070.%20Climbing%20Stairs,%20746.%20Min%20Cost%20Climbing%20Stairs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Willow Wu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Willow's Archive">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/18/LeetCode%20509.%20Fibonacci%20Number,%2070.%20Climbing%20Stairs,%20746.%20Min%20Cost%20Climbing%20Stairs/" class="post-title-link" itemprop="url">LeetCode | 509. Fibonacci Number, 70. Climbing Stairs, 746. Min Cost Climbing Stairs</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-08-18 19:17:02 / Modified: 19:18:17" itemprop="dateCreated datePublished" datetime="2023-08-18T19:17:02-07:00">2023-08-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="509-Fibonacci-Number"><a href="#509-Fibonacci-Number" class="headerlink" title="509. Fibonacci Number"></a>509. Fibonacci Number</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/fibonacci-number/">https://leetcode.com/problems/fibonacci-number/</a></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>The Fibonacci numbers, commonly denoted <code>F(n)</code> form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from <code>0</code> and <code>1</code>. That is,</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">F(0) = 0, F(1) = 1</span><br><span class="line">F(n) = F(n - 1) + F(n - 2), for n &gt; 1.</span><br></pre></td></tr></table></figure>
+
+<p>Given <code>n</code>, calculate <code>F(n)</code>.</p>
+<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><h3 id="Dynamic-Programming"><a href="#Dynamic-Programming" class="headerlink" title="Dynamic Programming"></a>Dynamic Programming</h3><ul>
+<li>If <code>n</code> equals to <code>0</code> or <code>1</code>, return <code>n</code>.</li>
+<li>Else, initialize a dp array to save the Fibonacci number of the current index. Initialize the the index 0 of the dp array to <code>0</code> and index 1 to <code>1</code>.</li>
+<li>Loop the array from index <code>2</code>:<ul>
+<li>Add the sum of the previous index and the index before the pervious index to the current element.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Recursion"><a href="#Recursion" class="headerlink" title="Recursion"></a>Recursion</h3><ul>
+<li>If <code>n</code> equals to <code>0</code> or <code>1</code>, return <code>n</code>.</li>
+<li>Else, return the sum of the previous index and the index before the pervious index to the current element.</li>
+</ul>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// DP</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">fib</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span> || n == <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> n;</span><br><span class="line">        <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[n + <span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        dp[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">            dp[i] = dp[i - <span class="number">1</span>] + dp[i - <span class="number">2</span>];</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Recursion</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">fib</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span> || n == <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> n;</span><br><span class="line">        <span class="keyword">return</span> fib(n - <span class="number">1</span>) + fib(n - <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="70-Climbing-Stairs"><a href="#70-Climbing-Stairs" class="headerlink" title="70. Climbing Stairs"></a>70. Climbing Stairs</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/climbing-stairs/">https://leetcode.com/problems/climbing-stairs/</a></p>
+<h2 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h2><p>You are climbing a staircase. It takes <code>n</code> steps to reach the top.</p>
+<p>Each time you can either climb <code>1</code> or <code>2</code> steps. In how many distinct ways can you climb to the top?</p>
+<h2 id="Approach-1"><a href="#Approach-1" class="headerlink" title="Approach"></a>Approach</h2><ul>
+<li>The dp array is used to store the distinct ways to climb to the top.</li>
+<li>The first step has only one way and the second step has two ways so we initialize index 1 the dp array to 0 and 1 to 2.</li>
+<li>Loop the dp array from index <code>2</code>:<ul>
+<li>There are two ways to dlimb to the current index, from the previous step or the step before the previous step. The distinct ways to climb to the current index is the combination of the two ways.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">climbStairs</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[n + <span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        dp[<span class="number">2</span>] = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">3</span>; i &lt;= n; i++)</span><br><span class="line">            dp[i] = dp[i - <span class="number">1</span>] + dp[i - <span class="number">2</span>];</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="746-Min-Cost-Climbing-Stairs"><a href="#746-Min-Cost-Climbing-Stairs" class="headerlink" title="746. Min Cost Climbing Stairs"></a>746. Min Cost Climbing Stairs</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/min-cost-climbing-stairs/">https://leetcode.com/problems/min-cost-climbing-stairs/</a></p>
+<h2 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h2><p>You are given an integer array <code>cost</code> where <code>cost[i]</code> is the cost of <code>ith</code> step on a staircase. Once you pay the cost, you can either climb one or two steps.</p>
+<p>You can either start from the step with index <code>0</code>, or the step with index <code>1</code>.</p>
+<p>Return <em>the minimum cost to reach the top of the floor</em>.</p>
+<h2 id="Appraoch"><a href="#Appraoch" class="headerlink" title="Appraoch"></a>Appraoch</h2><ul>
+<li>The meaning of the dp array is to store the cost to reach <code>ith</code> step. So we need to calculate the cost of the step after the final step.</li>
+<li>The first step does not need cost so we initialize index <code>0</code> and <code>1</code> of the dp array to <code>0</code>.</li>
+<li>Loop through the dp array from index <code>2</code>:<ul>
+<li>There are two ways to climb to the current index, the first one is climbing from the previous index, the second one is climbing from the index before the previous index. Compute the cost of the two ways and save the smaller one to the current index.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minCostClimbingStairs</span><span class="params">(<span class="type">int</span>[] cost)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[cost.length + <span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        dp[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i &lt; dp.length; i++) &#123;</span><br><span class="line">            dp[i] = Math.min(dp[i - <span class="number">1</span>] + cost[i - <span class="number">1</span>], dp[i - <span class="number">2</span>] + cost[i - <span class="number">2</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[cost.length];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/08/16/LeetCode%20738.%20Monotone%20Increasing%20Digits/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1182,105 +1294,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/08/04/LeetCode%20216.%20Combination%20Sum%20III,%2017.%20Letter%20Combinations%20of%20a%20Phone%20Number/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Willow Wu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Willow's Archive">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/08/04/LeetCode%20216.%20Combination%20Sum%20III,%2017.%20Letter%20Combinations%20of%20a%20Phone%20Number/" class="post-title-link" itemprop="url">LeetCode | 216. Combination Sum III, 17. Letter Combinations of a Phone Number</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2023-08-04 23:36:08 / Modified: 23:39:53" itemprop="dateCreated datePublished" datetime="2023-08-04T23:36:08-07:00">2023-08-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="216-Combination-Sum-III"><a href="#216-Combination-Sum-III" class="headerlink" title="216. Combination Sum III"></a>216. Combination Sum III</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/combination-sum-iii/">https://leetcode.com/problems/combination-sum-iii/</a></p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Find all valid combinations of <code>k</code> numbers that sum up to <code>n</code> such that the following conditions are true:</p>
-<ul>
-<li>Only numbers <code>1</code> through <code>9</code> are used.</li>
-<li>Each number is used <strong>at most once</strong>.</li>
-</ul>
-<p>Return <em>a list of all possible valid combinations</em>. The list must not contain the same combination twice, and the combinations may be returned in any order.</p>
-<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><ul>
-<li>Initialize two global variables <code>result</code> (store the valid combinations) and <code>path</code> (store the current combination).</li>
-<li>Initialize a recursive function with parameters <code>k</code>, <code>n</code>, <code>sum</code> (store the current sum of the path) and <code>startIndex</code> (store the current starting integer).</li>
-<li>If the <code>sum</code> larger than <code>target</code>, which means the <code>sum</code> cannot equal to <code>n</code>, return.</li>
-<li>If the size of <code>path</code> equals to <code>k</code> and the <code>sum</code> equals to <code>target</code>, add the <code>path</code> to the <code>result</code>.</li>
-<li>For integers in <code>[startIndex, 9 - (k - path.size()) + 1]</code>:</li>
-<li>Add the current integer to <code>path</code> and recursively call the function with <code>sum</code> plus the current integer and new <code>startIndex</code> as the current integer plus 1. </li>
-<li>After the recursive call, the last element of the path list is removed to backtrack and explore other possible combinations.</li>
-</ul>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    List&lt;Integer&gt; path = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">combinationSum3</span><span class="params">(<span class="type">int</span> k, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        backTracking(k, <span class="number">1</span>, <span class="number">0</span>, n);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">backTracking</span><span class="params">(<span class="type">int</span> k, <span class="type">int</span> startIndex, <span class="type">int</span> sum, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (sum &gt; target)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span> (path.size() == k) &#123;</span><br><span class="line">            <span class="keyword">if</span> (sum == target) </span><br><span class="line">                result.add(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(path));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> startIndex; i &lt;= <span class="number">9</span> - (k - path.size()) + <span class="number">1</span>; i++) &#123;</span><br><span class="line">            path.add(i);</span><br><span class="line">            backTracking(k, i + <span class="number">1</span>, sum + i, target);</span><br><span class="line">            path.remove(path.size() - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="17-Letter-Combinations-of-a-Phone-Number"><a href="#17-Letter-Combinations-of-a-Phone-Number" class="headerlink" title="17. Letter Combinations of a Phone Number"></a>17. Letter Combinations of a Phone Number</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/letter-combinations-of-a-phone-number/">https://leetcode.com/problems/letter-combinations-of-a-phone-number/</a></p>
-<h2 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h2><p>Given a string containing digits from <code>2-9</code> inclusive, return all possible letter combinations that the number could represent. Return the answer in <strong>any order</strong>.</p>
-<p>A mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.</p>
-<h2 id="Approach-1"><a href="#Approach-1" class="headerlink" title="Approach"></a>Approach</h2><ul>
-<li>Initialize a global varaible <code>result</code> to store the valid combinations.</li>
-<li>Initialize a String array <code>nums</code>  to represent the mapping of digits to letters accroding to the value of digits.</li>
-<li>Intialize a recursive function with parameters <code>digits</code>, <code>nums</code>, <code>n</code> (represent the current index in <code>digits</code>) and <code>sb</code> (store the current combination).</li>
-<li>If the length of <code>sb</code> equals to the length of <code>digits</code>, add the String of <code>sb</code> to <code>result</code>.</li>
-<li>Find the set of letter corresponds to <code>n</code>.</li>
-<li>The function then iterates through each letter in the set of letters and appends it to the <code>sb</code>. </li>
-<li>Then recursively call the function with updated <code>n</code> (<code>n + 1</code>).</li>
-<li>After the recursive call, remove the last element in <code>sb</code>.</li>
-</ul>
-<h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    List&lt;String&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">public</span> List&lt;String&gt; <span class="title function_">letterCombinations</span><span class="params">(String digits)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (digits.length() == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        String[] nums = &#123;<span class="string">&quot;&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;abc&quot;</span>, <span class="string">&quot;def&quot;</span>, <span class="string">&quot;ghi&quot;</span>, <span class="string">&quot;jkl&quot;</span>, <span class="string">&quot;mno&quot;</span>, <span class="string">&quot;pqrs&quot;</span>, <span class="string">&quot;tuv&quot;</span>, <span class="string">&quot;wxyz&quot;</span>&#125;;</span><br><span class="line">        backtracking(digits, nums, <span class="number">0</span>, <span class="keyword">new</span> <span class="title class_">StringBuilder</span>());</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">backtracking</span><span class="params">(String digits, String[] nums, <span class="type">int</span> n, StringBuilder sb)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (n == digits.length()) &#123;</span><br><span class="line">            result.add(sb.toString());</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">String</span> <span class="variable">d</span> <span class="operator">=</span> nums[digits.charAt(n) - <span class="string">&#x27;0&#x27;</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; d.length(); i++) &#123;</span><br><span class="line">            sb.append(d.charAt(i));</span><br><span class="line">            backtracking(digits, nums, n + <span class="number">1</span>, sb);</span><br><span class="line">            sb.deleteCharAt(sb.length() - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1350,7 +1363,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1362,7 +1375,7 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
