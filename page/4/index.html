@@ -179,6 +179,127 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/07/14/LeetCode%2024,%2019,%20160,%20142/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Willow Wu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Willow's Archive">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/07/14/LeetCode%2024,%2019,%20160,%20142/" class="post-title-link" itemprop="url">LeetCode | 24. Swap Nodes in Pairs, 19. Remove Nth Node From End of List, 160. Intersection of Two Linked Lists, 142. Linked List Cycle II</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-07-14 18:25:05" itemprop="dateCreated datePublished" datetime="2023-07-14T18:25:05-04:00">2023-07-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-07-16 14:06:19" itemprop="dateModified" datetime="2023-07-16T14:06:19-04:00">2023-07-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="24-Swap-Nodes-in-Pairs"><a href="#24-Swap-Nodes-in-Pairs" class="headerlink" title="24. Swap Nodes in Pairs"></a>24. Swap Nodes in Pairs</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/swap-nodes-in-pairs/">https://leetcode.com/problems/swap-nodes-in-pairs/</a></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a linked list, swap every two adjacent nodes and return its head. You must solve the problem without modifying the values in the list’s nodes (i.e., only nodes themselves may be changed.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">swapPairs</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">dummyHead</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ListNode</span>(-<span class="number">1</span>, head);</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">cur</span> <span class="operator">=</span> dummyHead;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">temp1</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">temp2</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">temp3</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (cur.next != <span class="literal">null</span> &amp;&amp; cur.next.next != <span class="literal">null</span>) &#123;</span><br><span class="line">            temp1 = cur.next;</span><br><span class="line">            temp2 = cur.next.next;</span><br><span class="line">            temp3 = cur.next.next.next;</span><br><span class="line">            cur.next = temp2;</span><br><span class="line">            temp2.next = temp1;</span><br><span class="line">            temp1.next = temp3;</span><br><span class="line">            cur = temp1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummyHead.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Recursion</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">swapPairs</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">null</span> || head.next == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        </span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">next</span> <span class="operator">=</span> head.next;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">temp</span> <span class="operator">=</span> swapPairs(next.next);</span><br><span class="line"></span><br><span class="line">        next.next = head;</span><br><span class="line">        head.next = temp;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Remark"><a href="#Remark" class="headerlink" title="Remark"></a>Remark</h2><p>Use dummy head.</p>
+<hr>
+<h1 id="19-Remove-Nth-Node-From-End-of-List"><a href="#19-Remove-Nth-Node-From-End-of-List" class="headerlink" title="19. Remove Nth Node From End of List"></a>19. Remove Nth Node From End of List</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/">https://leetcode.com/problems/remove-nth-node-from-end-of-list/</a></p>
+<h2 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h2><p>Given the <code>head</code> of a linked list, remove the n^th^ node from the end of the list and return its head.</p>
+<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><h3 id="Two-pointers"><a href="#Two-pointers" class="headerlink" title="Two pointers"></a>Two pointers</h3><ul>
+<li>Initialize <code>fast</code> pointer and <code>slow</code> pointer, both points to the <code>head</code>.</li>
+<li>Let <code>fast</code> points to the n^th^ node.</li>
+<li>Traverse both <code>fast</code> and <code>slow</code> pointers, until <code>fast</code> pointer reaches the end of the list.</li>
+<li>Let the <code>slow</code> pointer points to the next of next pointer, delete the next pointer.</li>
+</ul>
+<h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">removeNthFromEnd</span><span class="params">(ListNode head, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">dummyHead</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ListNode</span>(-<span class="number">1</span>, head);</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">fast</span> <span class="operator">=</span> dummyHead;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">slow</span> <span class="operator">=</span> dummyHead;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">            fast = fast.next;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (fast.next != <span class="literal">null</span>) &#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next;</span><br><span class="line">        &#125;</span><br><span class="line">        slow.next = slow.next.next;</span><br><span class="line">        <span class="keyword">return</span> dummyHead.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="160-Intersection-of-Two-Linked-Lists"><a href="#160-Intersection-of-Two-Linked-Lists" class="headerlink" title="160. Intersection of Two Linked Lists"></a>160. Intersection of Two Linked Lists</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/intersection-of-two-linked-lists/">https://leetcode.com/problems/intersection-of-two-linked-lists/</a></p>
+<h2 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h2><p>Given the heads of two singly linked-lists <code>headA</code> and <code>headB</code>, return the node at which the two lists intersect. If the two linked lists have no intersection at all, return <code>null</code>.</p>
+<p>For example, the following two linked lists begin to intersect at node <code>c1</code>:<br><img src="/images/160.png"></p>
+<p>The test cases are generated such that there are no cycles anywhere in the entire linked structure.</p>
+<p><strong>Note</strong> that the linked lists must <strong>retain their original structure</strong> after the function returns.</p>
+<h2 id="Approach-1"><a href="#Approach-1" class="headerlink" title="Approach"></a>Approach</h2><ul>
+<li>Compute the length of A and B.</li>
+<li>Let longer length points to the place where the reamin length equals to the shorter length.</li>
+<li>Iterate the two lists until the two lists findsame node.</li>
+</ul>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">getIntersectionNode</span><span class="params">(ListNode headA, ListNode headB)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">lenA</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">lenB</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">curA</span> <span class="operator">=</span> headA;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">curB</span> <span class="operator">=</span> headB;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (curA != <span class="literal">null</span>) &#123;</span><br><span class="line">            lenA++;</span><br><span class="line">            curA = curA.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (curB != <span class="literal">null</span>) &#123;</span><br><span class="line">            lenB++;</span><br><span class="line">            curB = curB.next;</span><br><span class="line">        &#125;</span><br><span class="line">        curA = headA;</span><br><span class="line">        curB = headB;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (lenA &lt; lenB) &#123;</span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">temp</span> <span class="operator">=</span> curB;</span><br><span class="line">            curB = curA;</span><br><span class="line">            curA = temp;</span><br><span class="line">            <span class="type">int</span> <span class="variable">tempL</span> <span class="operator">=</span> lenB;</span><br><span class="line">            lenB = lenA;</span><br><span class="line">            lenA = tempL;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> lenA - lenB;</span><br><span class="line">        <span class="keyword">while</span> (len &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            curA = curA.next;</span><br><span class="line">            len--;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (curA != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (curA == curB)</span><br><span class="line">                <span class="keyword">return</span> curA;</span><br><span class="line">            curA = curA.next;</span><br><span class="line">            curB = curB.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/160_2.png"></p>
+<hr>
+<h1 id="142-Linked-List-Cycle-II"><a href="#142-Linked-List-Cycle-II" class="headerlink" title="142. Linked List Cycle II"></a>142. Linked List Cycle II</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/linked-list-cycle-ii/">https://leetcode.com/problems/linked-list-cycle-ii/</a></p>
+<h2 id="Description-3"><a href="#Description-3" class="headerlink" title="Description"></a>Description</h2><p>Given the <code>head</code> of a linked list, return the <em>node where the cycle begins</em>. If there is <em>no cycle</em>, return <code>null</code>.</p>
+<p>There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the <code>next</code> pointer. Internally, <code>pos</code> is used to denote the index of the node that tail’s <code>next</code> pointer is connected to (<strong>0-indexed</strong>). It is <code>-1</code> if there is no cycle. <strong>Note that</strong> <code>pos</code> <strong>is not passed as a parameter</strong>.</p>
+<p><strong>Do not modify</strong> the linked list.</p>
+<h2 id="Approach-2"><a href="#Approach-2" class="headerlink" title="Approach"></a>Approach</h2><h3 id="Floyd’s-Cycle-Detection-Two-pointers"><a href="#Floyd’s-Cycle-Detection-Two-pointers" class="headerlink" title="Floyd’s Cycle Detection (Two pointers)"></a>Floyd’s Cycle Detection (Two pointers)</h3><h4 id="Detect-Cycle"><a href="#Detect-Cycle" class="headerlink" title="Detect Cycle"></a>Detect Cycle</h4><ul>
+<li>Initialize a <code>fast</code> pointer and a <code>slow</code> pointer, both points to the head.</li>
+<li>Let the <code>fast</code> pointer moves 2 steps at a time, <code>slow</code> pointer moves 1 step at a time.</li>
+<li>If the <code>fast</code> pointer and <code>slow</code> pointer meets, then there exists a cycle.</li>
+</ul>
+<h4 id="Compute-the-start-of-the-cycle"><a href="#Compute-the-start-of-the-cycle" class="headerlink" title="Compute the start of the cycle"></a>Compute the start of the cycle</h4><ul>
+<li>Denote <code>x</code> as the length from head to the start of the cycle, <code>y</code> as the length from the start of they cycle to the meet point, <code>z</code> as the length from the meet point to the start of the cycle.</li>
+<li>When they meet, slow pointer travels <code>x + y</code> nodes, fast pointer travels <code>x + y + n(y + z)</code>. Thus, <code>(x + y) * 2 = x + y + n(y + z)</code>.</li>
+<li>After simplification, the formula truns to <code>x = (n - 1) (y + z) + z</code>. </li>
+<li>So, if a pointer at <code>head</code> and a pointer at the meet node start to move at the same time, they will meet at the start of the cycle.</li>
+</ul>
+<h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">detectCycle</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">fast</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">slow</span> <span class="operator">=</span> head;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (fast != <span class="literal">null</span> &amp;&amp; fast.next != <span class="literal">null</span>) &#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            <span class="keyword">if</span> (slow == fast) &#123;</span><br><span class="line">                <span class="type">ListNode</span> <span class="variable">n1</span> <span class="operator">=</span> head;</span><br><span class="line">                <span class="type">ListNode</span> <span class="variable">n2</span> <span class="operator">=</span> fast;</span><br><span class="line">                <span class="keyword">while</span> (n1 != n2) &#123;</span><br><span class="line">                    n1 = n1.next;</span><br><span class="line">                    n2 = n2.next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> n1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/142.png"></p>
+<hr>
+<p>Reference: <a target="_blank" rel="noopener" href="https://programmercarl.com/">https://programmercarl.com/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/07/13/LeetCode%20203.%20Remove%20Linked%20List%20Elements,%20707.%20Design%20Linked%20List,%20206.%20Reverse%20Linked%20List/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -204,7 +325,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-07-13 12:51:22 / Modified: 13:04:13" itemprop="dateCreated datePublished" datetime="2023-07-13T12:51:22-07:00">2023-07-13</time>
+              <time title="Created: 2023-07-13 15:51:22 / Modified: 16:04:13" itemprop="dateCreated datePublished" datetime="2023-07-13T15:51:22-04:00">2023-07-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -309,7 +430,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-07-12 12:31:35 / Modified: 14:56:31" itemprop="dateCreated datePublished" datetime="2023-07-12T12:31:35-07:00">2023-07-12</time>
+              <time title="Created: 2023-07-12 15:31:35 / Modified: 17:56:31" itemprop="dateCreated datePublished" datetime="2023-07-12T15:31:35-04:00">2023-07-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -410,7 +531,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-07-11 13:40:28 / Modified: 13:38:33" itemprop="dateCreated datePublished" datetime="2023-07-11T13:40:28-07:00">2023-07-11</time>
+              <time title="Created: 2023-07-11 16:40:28 / Modified: 16:38:33" itemprop="dateCreated datePublished" datetime="2023-07-11T16:40:28-04:00">2023-07-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -558,7 +679,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

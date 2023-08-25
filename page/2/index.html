@@ -179,7 +179,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/08/06/LeetCode%2039.%20Combination%20Sum,%2040.%20Combination%20Sum%20II,%20131.%20Palindrome%20Partitioning/">
+    <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/08/08/LeetCode%2093.%20Restore%20IP%20Addresses,%2078.%20Subsets,%2090.%20Subsets%20II/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -193,7 +193,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2023/08/06/LeetCode%2039.%20Combination%20Sum,%2040.%20Combination%20Sum%20II,%20131.%20Palindrome%20Partitioning/" class="post-title-link" itemprop="url">LeetCode | 39. Combination Sum, 40. Combination Sum II, 131. Palindrome Partitioning</a>
+            <a href="/2023/08/08/LeetCode%2093.%20Restore%20IP%20Addresses,%2078.%20Subsets,%2090.%20Subsets%20II/" class="post-title-link" itemprop="url">LeetCode | 93. Restore IP Addresses, 78. Subsets, 90. Subsets II</a>
         </h2>
 
         <div class="post-meta">
@@ -204,7 +204,130 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-08-06 23:45:36 / Modified: 23:46:45" itemprop="dateCreated datePublished" datetime="2023-08-06T23:45:36-07:00">2023-08-06</time>
+              <time title="Created: 2023-08-08 02:34:41 / Modified: 02:35:54" itemprop="dateCreated datePublished" datetime="2023-08-08T02:34:41-04:00">2023-08-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="93-Restore-IP-Addresses"><a href="#93-Restore-IP-Addresses" class="headerlink" title="93. Restore IP Addresses"></a>93. Restore IP Addresses</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/restore-ip-addresses/">https://leetcode.com/problems/restore-ip-addresses/</a></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>A <strong>valid IP address</strong> consists of exactly four integers separated by single dots. Each integer is between <code>0</code> and <code>255</code> (<strong>inclusive</strong>) and cannot have leading zeros.</p>
+<ul>
+<li>For example, <code>&quot;0.1.2.201&quot;</code> and <code>&quot;192.168.1.1&quot;</code> are valid IP addresses, but <code>&quot;0.011.255.245&quot;</code>, <code>&quot;192.168.1.312&quot;</code> and <code>&quot;192.168@1.1&quot;</code> are invalid IP addresses.</li>
+</ul>
+<p>Given a string s containing only digits, return <em>all possible valid IP addresses that can be formed by inserting dots into</em> <code>s</code>. You are <strong>not</strong> allowed to reorder or remove any digits in <code>s</code>. You may return the valid IP addresses in <strong>any</strong> order.</p>
+<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><ul>
+<li>Initialize global variables <code>result</code> to sotre the valid addresses and <code>sb</code> to strore the current address.</li>
+<li>Initialize a helper method with parameters <code>start</code> (the start index of the integer), <code>end</code> (the end index of the integer) and <code>s</code> to check whether the integer is valid in the IP address.</li>
+<li>If <code>start</code> larger than <code>end</code> or the integer with more than 1 digit starting with 0, return <code>false</code>.</li>
+<li>Else if the integer larger than 255, return <code>false</code>.</li>
+<li>Else, return <code>true</code>.</li>
+<li>Initialize a recursive function with parameters <code>s</code>, <code>cnt</code> (store the number of integers in the current <code>sb</code> ) and <code>startIndex</code>.</li>
+<li>If <code>cnt</code> equals to 4 and the length of <code>s</code> plus 3 (the length of dots) equals to the length of  <code>sb</code> add the current <code>sb</code> string to <code>result</code>.</li>
+<li>If the <code>cnt</code> only equals to 4, return.</li>
+<li>Loop through <code>s</code> , starting from the <code>startIndex</code>.<ul>
+<li>If the current integer is valid, add the integer and dot (if it is not the fourth integer) to the <code>path</code> and add 1 to <code>cnt</code></li>
+<li>Recursively call the function with updated <code>startIndex</code> (current index plus 1).</li>
+<li>After the recursive calls, remove the added integer and dot and minus 1 to <code>cnt</code>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    List&lt;String&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">    <span class="keyword">public</span> List&lt;String&gt; <span class="title function_">restoreIpAddresses</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        backtracking(s, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">backtracking</span><span class="params">(String s, <span class="type">int</span> startIndex, <span class="type">int</span> cnt)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (cnt == <span class="number">4</span> &amp;&amp; s.length() + <span class="number">3</span> == sb.length()) &#123;</span><br><span class="line">            result.add(sb.toString());</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (cnt == <span class="number">4</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> startIndex; i &lt; s.length() &amp;&amp; i - startIndex &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (isValid(startIndex, i, s)) &#123;</span><br><span class="line">                sb.append(s.substring(startIndex, i + <span class="number">1</span>));</span><br><span class="line">                cnt++;</span><br><span class="line">                <span class="keyword">if</span> (cnt &lt; <span class="number">4</span>)</span><br><span class="line">                    sb.append(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">                backtracking(s, i + <span class="number">1</span>, cnt);</span><br><span class="line">                cnt--;</span><br><span class="line">                <span class="keyword">if</span> (cnt &lt; <span class="number">3</span>)</span><br><span class="line">                    sb.delete(startIndex + cnt, i + <span class="number">2</span> + cnt);</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    sb.delete(startIndex + cnt, i + <span class="number">1</span> + cnt);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(<span class="type">int</span> start, <span class="type">int</span> end, String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (start &gt; end)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (s.charAt(start) == <span class="string">&#x27;0&#x27;</span> &amp;&amp; start != end)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> start; i &lt;= end; i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> s.charAt(i) - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            sum = sum + (<span class="type">int</span>)(Math.pow(<span class="number">10</span>, end - i)) * temp;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (sum &gt; <span class="number">255</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="78-Subsets"><a href="#78-Subsets" class="headerlink" title="78. Subsets"></a>78. Subsets</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/subsets/">https://leetcode.com/problems/subsets/</a></p>
+<h2 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h2><p>Given an integer array <code>nums</code> of <strong>unique</strong> elements, return <em>all possible subsets<br>(the power set)</em>.</p>
+<p>The solution set <strong>must not</strong> contain duplicate subsets. Return the solution in <strong>any order</strong>.</p>
+<h2 id="Approach-1"><a href="#Approach-1" class="headerlink" title="Approach"></a>Approach</h2><ul>
+<li>Initialize global variables <code>result</code> to sotre the valid subsets and <code>path</code> to strore the current subset.</li>
+<li>Initialize a recursive function with parameters <code>nums</code> and <code>startIndex</code>, which controls the elements can be included in the current iteration.</li>
+<li>Call the function with <code>nums</code> and <code>0</code>.</li>
+<li>Add the current <code>path</code> to the <code>result</code>.</li>
+<li>Loop through <code>nums</code>, starting from <code>startIndex</code>:<ul>
+<li>Add the current element to <code>path</code> and recusively call the function with updated <code>startIndex</code> (current index + 1).</li>
+<li>After the recursive calls, remove the last element in <code>path</code>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    List&lt;Integer&gt; path = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">subsets</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        backtracking(nums, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">backtracking</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> startIndex)</span> &#123;</span><br><span class="line">        result.add(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(path));</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> startIndex; i &lt; nums.length; i++) &#123;</span><br><span class="line">            path.add(nums[i]);</span><br><span class="line">            backtracking(nums, i + <span class="number">1</span>);</span><br><span class="line">            path.remove(path.size() - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="90-Subsets-II"><a href="#90-Subsets-II" class="headerlink" title="90. Subsets II"></a>90. Subsets II</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/subsets-ii/">https://leetcode.com/problems/subsets-ii/</a></p>
+<h2 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h2><p>Given an integer array <code>nums</code> that may contain duplicates, return <em>all possible subsets (the power set)</em>.</p>
+<p>The solution set <strong>must not</strong> contain duplicate subsets. Return the solution in <strong>any order</strong>.</p>
+<h2 id="Approach-2"><a href="#Approach-2" class="headerlink" title="Approach"></a>Approach</h2><ul>
+<li>Initialize global variables <code>result</code> to sotre the valid subsets and <code>path</code> to strore the current subset.</li>
+<li>Initialize a recursive function with parameters <code>nums</code> and <code>startIndex</code>, which controls the elements can be included in the current iteration.</li>
+<li>Call the function with <code>nums</code> and <code>0</code>.</li>
+<li>Add the current <code>path</code> to the <code>result</code>.</li>
+<li>Loop through <code>nums</code>, starting from <code>startIndex</code>:<ul>
+<li>If the current index of the element larger than <code>startIndex</code> and equal with the previous element, which means this element has appeared in this iteration, skip this element to remove duplication.</li>
+<li>Else, add the current element to <code>path</code> and recusively call the function with updated <code>startIndex</code> (current index + 1).</li>
+<li>After the recursive calls, remove the last element in <code>path</code>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    List&lt;Integer&gt; path = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">subsetsWithDup</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        backtracking(nums, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">backtracking</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> startIndex)</span> &#123;</span><br><span class="line">        result.add(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(path));</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> startIndex; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt; startIndex &amp;&amp; nums[i - <span class="number">1</span>] == nums[i])</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            path.add(nums[i]);</span><br><span class="line">            backtracking(nums, i + <span class="number">1</span>);</span><br><span class="line">            path.remove(path.size() - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/08/07/LeetCode%2039.%20Combination%20Sum,%2040.%20Combination%20Sum%20II,%20131.%20Palindrome%20Partitioning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Willow Wu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Willow's Archive">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/07/LeetCode%2039.%20Combination%20Sum,%2040.%20Combination%20Sum%20II,%20131.%20Palindrome%20Partitioning/" class="post-title-link" itemprop="url">LeetCode | 39. Combination Sum, 40. Combination Sum II, 131. Palindrome Partitioning</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-08-07 02:45:36 / Modified: 02:46:45" itemprop="dateCreated datePublished" datetime="2023-08-07T02:45:36-04:00">2023-08-07</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -303,7 +426,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/08/04/LeetCode%20216.%20Combination%20Sum%20III,%2017.%20Letter%20Combinations%20of%20a%20Phone%20Number/">
+    <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/08/05/LeetCode%20216.%20Combination%20Sum%20III,%2017.%20Letter%20Combinations%20of%20a%20Phone%20Number/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -317,7 +440,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2023/08/04/LeetCode%20216.%20Combination%20Sum%20III,%2017.%20Letter%20Combinations%20of%20a%20Phone%20Number/" class="post-title-link" itemprop="url">LeetCode | 216. Combination Sum III, 17. Letter Combinations of a Phone Number</a>
+            <a href="/2023/08/05/LeetCode%20216.%20Combination%20Sum%20III,%2017.%20Letter%20Combinations%20of%20a%20Phone%20Number/" class="post-title-link" itemprop="url">LeetCode | 216. Combination Sum III, 17. Letter Combinations of a Phone Number</a>
         </h2>
 
         <div class="post-meta">
@@ -328,7 +451,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-08-04 23:36:08 / Modified: 23:39:53" itemprop="dateCreated datePublished" datetime="2023-08-04T23:36:08-07:00">2023-08-04</time>
+              <time title="Created: 2023-08-05 02:36:08 / Modified: 02:39:53" itemprop="dateCreated datePublished" datetime="2023-08-05T02:36:08-04:00">2023-08-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -427,7 +550,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-08-03 13:34:25 / Modified: 13:36:43" itemprop="dateCreated datePublished" datetime="2023-08-03T13:34:25-07:00">2023-08-03</time>
+              <time title="Created: 2023-08-03 16:34:25 / Modified: 16:36:43" itemprop="dateCreated datePublished" datetime="2023-08-03T16:34:25-04:00">2023-08-03</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -513,7 +636,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-08-02 10:49:56 / Modified: 10:51:19" itemprop="dateCreated datePublished" datetime="2023-08-02T10:49:56-07:00">2023-08-02</time>
+              <time title="Created: 2023-08-02 13:49:56 / Modified: 13:51:19" itemprop="dateCreated datePublished" datetime="2023-08-02T13:49:56-04:00">2023-08-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -658,7 +781,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-08-01 14:33:38 / Modified: 14:34:45" itemprop="dateCreated datePublished" datetime="2023-08-01T14:33:38-07:00">2023-08-01</time>
+              <time title="Created: 2023-08-01 17:33:38 / Modified: 17:34:45" itemprop="dateCreated datePublished" datetime="2023-08-01T17:33:38-04:00">2023-08-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -785,7 +908,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-07-31 14:19:35 / Modified: 14:21:21" itemprop="dateCreated datePublished" datetime="2023-07-31T14:19:35-07:00">2023-07-31</time>
+              <time title="Created: 2023-07-31 17:19:35 / Modified: 17:21:21" itemprop="dateCreated datePublished" datetime="2023-07-31T17:19:35-04:00">2023-07-31</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -928,7 +1051,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-07-30 13:35:27 / Modified: 13:36:54" itemprop="dateCreated datePublished" datetime="2023-07-30T13:35:27-07:00">2023-07-30</time>
+              <time title="Created: 2023-07-30 16:35:27 / Modified: 16:36:54" itemprop="dateCreated datePublished" datetime="2023-07-30T16:35:27-04:00">2023-07-30</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1065,7 +1188,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/07/28/LeetCode%20513.Find%20Bottom%20Left%20Tree%20Value,112.Path%20Sum,105.Construct%20BT%20from%20Inorder%20and%20Postorder/">
+    <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/07/29/LeetCode%20513.Find%20Bottom%20Left%20Tree%20Value,112.Path%20Sum,105.Construct%20BT%20from%20Inorder%20and%20Postorder/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1079,7 +1202,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2023/07/28/LeetCode%20513.Find%20Bottom%20Left%20Tree%20Value,112.Path%20Sum,105.Construct%20BT%20from%20Inorder%20and%20Postorder/" class="post-title-link" itemprop="url">LeetCode | 513.Find Bottom Left Tree Value,112.Path Sum,105.Construct Binary Tree from Preorder and Inorder Traversal</a>
+            <a href="/2023/07/29/LeetCode%20513.Find%20Bottom%20Left%20Tree%20Value,112.Path%20Sum,105.Construct%20BT%20from%20Inorder%20and%20Postorder/" class="post-title-link" itemprop="url">LeetCode | 513.Find Bottom Left Tree Value,112.Path Sum,105.Construct Binary Tree from Preorder and Inorder Traversal</a>
         </h2>
 
         <div class="post-meta">
@@ -1090,7 +1213,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-07-28 22:19:08 / Modified: 22:20:37" itemprop="dateCreated datePublished" datetime="2023-07-28T22:19:08-07:00">2023-07-28</time>
+              <time title="Created: 2023-07-29 01:19:08 / Modified: 01:20:37" itemprop="dateCreated datePublished" datetime="2023-07-29T01:19:08-04:00">2023-07-29</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1213,7 +1336,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2023-07-27 13:16:35 / Modified: 13:17:39" itemprop="dateCreated datePublished" datetime="2023-07-27T13:16:35-07:00">2023-07-27</time>
+              <time title="Created: 2023-07-27 16:16:35 / Modified: 16:17:39" itemprop="dateCreated datePublished" datetime="2023-07-27T16:16:35-04:00">2023-07-27</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1304,135 +1427,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/07/26/LeetCode%20104.%20Maximum%20Depth%20of%20BT,%20111.%20Minimum%20Depth%20of%20BT,%20222.%20Count%20Complete%20Tree%20Nodes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Willow Wu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Willow's Archive">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/07/26/LeetCode%20104.%20Maximum%20Depth%20of%20BT,%20111.%20Minimum%20Depth%20of%20BT,%20222.%20Count%20Complete%20Tree%20Nodes/" class="post-title-link" itemprop="url">LeetCode | 104. Maximum Depth of Binary Tree, 111. Minimum Depth of Binary Tree, 222. Count Complete Tree Nodes</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2023-07-26 12:56:46 / Modified: 12:58:30" itemprop="dateCreated datePublished" datetime="2023-07-26T12:56:46-07:00">2023-07-26</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="104-Maximum-Depth-of-Binary-Tree"><a href="#104-Maximum-Depth-of-Binary-Tree" class="headerlink" title="104. Maximum Depth of Binary Tree"></a>104. Maximum Depth of Binary Tree</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/maximum-depth-of-binary-tree/">https://leetcode.com/problems/maximum-depth-of-binary-tree/</a></p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given the <code>root</code> of a binary tree, return <em>its maximum depth</em>.</p>
-<p>A binary tree’s <strong>maximum depth</strong> is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
-<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><h3 id="Recursion"><a href="#Recursion" class="headerlink" title="Recursion"></a>Recursion</h3><p>The maximum depth of a binary tree is the height of the root. </p>
-<p>The height of a binary tree node refers to the number of edges or nodes in the longest simple path from that node to a leaf node.</p>
-<ul>
-<li>Initialize a recursive function with parameter root, which reprensents the processing node.</li>
-<li>If the node is null, which means the node doesn’t exists, return 0.</li>
-<li>Else, Compute the depth of left tree and right tree recursively. Return the larger depth value and add 1 to it, which represents the node of the current level.</li>
-</ul>
-<h3 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h3><ul>
-<li>Initialize a queue and enqueue the root. Initialize <code>depth</code> to 0. This variable will keep track of the current depth level during the BFS traversal.</li>
-<li>While the queue is not empty:<ul>
-<li>Compute the <code>size</code> of the queue.</li>
-<li><code>depth++</code>;</li>
-<li>while <code>size &gt; 0</code>:<ul>
-<li>Dequeue the head of the queue and enqueue its children (If not null);</li>
-<li><code>size--</code>;</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//Recursive</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxDepth</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> max(root);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">max</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> Math.max(max(root.left), max(root.right)) + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//BFS</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxDepth</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">        queue.add(root);</span><br><span class="line">        <span class="type">int</span> <span class="variable">depth</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> queue.size();</span><br><span class="line">            depth++;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">                <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> queue.remove();</span><br><span class="line">                <span class="keyword">if</span> (node.left != <span class="literal">null</span>)</span><br><span class="line">                    queue.add(node.left);</span><br><span class="line">                <span class="keyword">if</span> (node.right != <span class="literal">null</span>)</span><br><span class="line">                    queue.add(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> depth;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="111-Minimum-Depth-of-Binary-Tree"><a href="#111-Minimum-Depth-of-Binary-Tree" class="headerlink" title="111. Minimum Depth of Binary Tree"></a>111. Minimum Depth of Binary Tree</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/minimum-depth-of-binary-tree/">https://leetcode.com/problems/minimum-depth-of-binary-tree/</a></p>
-<h2 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h2><p>Given a binary tree, find its minimum depth.</p>
-<p>The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.</p>
-<p><strong>Note</strong>: A leaf is a node with no children.</p>
-<h2 id="Approach-1"><a href="#Approach-1" class="headerlink" title="Approach"></a>Approach</h2><h3 id="Recursion-1"><a href="#Recursion-1" class="headerlink" title="Recursion"></a>Recursion</h3><ul>
-<li>Initialize a recursive function with parameter root, which represents the processing node.</li>
-<li>If the root is null, it means there is no node, so the function returns 0.</li>
-<li>If the root has no left and right children (i.e., it is a leaf node), the function returns 1, indicating that the minimum depth is 1 at this leaf node.</li>
-<li>If the root only has right child, compute the depth of the right child, return the depth and add 1.</li>
-<li>If the root only has left child, compute the depth of the left child, return the depth and add 1.</li>
-<li>If the root has both right child and left child, compute the depth of the two children, choose the smllaer depth, return the smaller depth and add 1.</li>
-</ul>
-<h3 id="BFS-1"><a href="#BFS-1" class="headerlink" title="BFS"></a>BFS</h3><ul>
-<li>Initialize a queue and enqueue the root. Initialize <code>depth</code> to 0. This variable will keep track of the current depth level during the BFS traversal.</li>
-<li>While the queue is not empty:<ul>
-<li>Compute the <code>size</code> of the queue.</li>
-<li><code>depth++</code>;</li>
-<li>while <code>size &gt; 0</code>:<ul>
-<li>Dequeue the head of the queue and enqueue its children (If not null);</li>
-<li>If the head is a leaf, return the depth;</li>
-<li><code>size--</code>;</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// Recursive</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minDepth</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> find(root);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">find</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (root.left == <span class="literal">null</span> &amp;&amp; root.right == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">leftDepth</span> <span class="operator">=</span> find(root.left);</span><br><span class="line">        <span class="type">int</span> <span class="variable">rightDepth</span> <span class="operator">=</span> find(root.right);</span><br><span class="line">        <span class="keyword">if</span> (root.left == <span class="literal">null</span> &amp;&amp; root.right != <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> rightDepth + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (root.right == <span class="literal">null</span> &amp;&amp; root.left != <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> leftDepth + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span> + Math.min(leftDepth, rightDepth);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//BFS</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minDepth</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">        queue.add(root);</span><br><span class="line">        <span class="type">int</span> <span class="variable">depth</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> queue.size();</span><br><span class="line">            depth++;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">                <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> queue.remove();</span><br><span class="line">                <span class="keyword">if</span> (node.left == <span class="literal">null</span> &amp;&amp; node.right == <span class="literal">null</span>)</span><br><span class="line">                    <span class="keyword">return</span> depth;</span><br><span class="line">                <span class="keyword">if</span> (node.left != <span class="literal">null</span>)</span><br><span class="line">                    queue.add(node.left);</span><br><span class="line">                <span class="keyword">if</span> (node.right != <span class="literal">null</span>)</span><br><span class="line">                    queue.add(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> depth;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="222-Count-Complete-Tree-Nodes"><a href="#222-Count-Complete-Tree-Nodes" class="headerlink" title="222. Count Complete Tree Nodes"></a>222. Count Complete Tree Nodes</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/count-complete-tree-nodes/">https://leetcode.com/problems/count-complete-tree-nodes/</a></p>
-<h2 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h2><p>Given the <code>root</code> of a <strong>complete</strong> binary tree, return the number of the nodes in the tree.</p>
-<p>According to Wikipedia, every level, except possibly the last, is completely filled in a complete binary tree, and all nodes in the last level are as far left as possible. It can have between <code>1</code> and <code>2h</code> nodes inclusive at the last level <code>h</code>.</p>
-<p>Design an algorithm that runs in less than <code>O(n)</code> time complexity.</p>
-<h2 id="Approach-2"><a href="#Approach-2" class="headerlink" title="Approach"></a>Approach</h2><h3 id="Recursion-use-the-property-of-full-binary-tree"><a href="#Recursion-use-the-property-of-full-binary-tree" class="headerlink" title="Recursion use the property of full binary tree"></a>Recursion use the property of full binary tree</h3><p>In full binary tree, the number of nodes of the tree can be calculated by 2^h^ - 1, h represents the level of the tree.</p>
-<p>The complete binary tree can be divided into nodes with full binary tree.</p>
-<p><img src="/images/222.png"></p>
-<p>In a complete binary tree, if the depth obtained by recursively traversing left is equal to the depth obtained by recursively traversing right, then it is a full binary tree.</p>
-<h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// Use full binary tree</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">countNodes</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">left</span> <span class="operator">=</span> root.left;</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">right</span> <span class="operator">=</span> root.right;</span><br><span class="line">        <span class="type">int</span> <span class="variable">leftDepth</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">rightDepth</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (left != <span class="literal">null</span>) &#123;</span><br><span class="line">            left = left.left;</span><br><span class="line">            leftDepth++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (right != <span class="literal">null</span>) &#123;</span><br><span class="line">            right = right.right;</span><br><span class="line">            rightDepth++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (leftDepth == rightDepth) &#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="type">int</span>)Math.pow(<span class="number">2</span>, leftDepth) - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> countNodes(root.left) + countNodes(root.right) + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// General method</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">countNodes</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> count(root);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">count</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (root.left == <span class="literal">null</span> &amp;&amp; root.right == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + count(root.left) + count(root.right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1502,7 +1496,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
