@@ -179,6 +179,145 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/07/18/LeetCode%20344.%20Reverse%20String,%20541.%20Reverse%20String%20II,%20%E5%89%9105.%20%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC,151.%20Reverse%20Words%20in%20a%20String,%E5%89%9158/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Willow Wu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Willow's Archive">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/07/18/LeetCode%20344.%20Reverse%20String,%20541.%20Reverse%20String%20II,%20%E5%89%9105.%20%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC,151.%20Reverse%20Words%20in%20a%20String,%E5%89%9158/" class="post-title-link" itemprop="url">LeetCode | 344. Reverse String, 541. Reverse String II, 剑指 Offer 05. 替换空格, 151. Reverse Words in a String, 剑指Offer58-II.左旋转字符串</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-07-18 15:50:34 / Modified: 15:52:19" itemprop="dateCreated datePublished" datetime="2023-07-18T15:50:34-04:00">2023-07-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="344-Reverse-String"><a href="#344-Reverse-String" class="headerlink" title="344. Reverse String"></a>344. Reverse String</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/reverse-string/">https://leetcode.com/problems/reverse-string/</a></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Write a function that reverses a string. The input string is given as an array of characters <code>s</code>.</p>
+<p>You must do this by modifying the input array in-place with <code>O(1)</code> extra memory.</p>
+<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><h3 id="Two-pointers"><a href="#Two-pointers" class="headerlink" title="Two pointers"></a>Two pointers</h3><ul>
+<li>Initialize <code>start</code> points to the first element of <code>s</code>, <code>end</code> points to the last element of <code>s</code>.</li>
+<li>Swap <code>start</code> and <code>end</code>, then both pointers move towards the middle at the same time.</li>
+<li>Stop when <code>start</code> and <code>end</code> meet.</li>
+</ul>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">reverseString</span><span class="params">(<span class="type">char</span>[] s)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> s.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">            <span class="type">char</span> <span class="variable">temp</span> <span class="operator">=</span> s[left];</span><br><span class="line">            s[left] = s[right];</span><br><span class="line">            s[right] = temp;</span><br><span class="line">            left++;</span><br><span class="line">            right--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="541-Reverse-String-II"><a href="#541-Reverse-String-II" class="headerlink" title="541. Reverse String II"></a>541. Reverse String II</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/reverse-string-ii/">https://leetcode.com/problems/reverse-string-ii/</a></p>
+<h2 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h2><p>Given a string <code>s</code> and an integer <code>k</code>, reverse the first <code>k</code> characters for every <code>2k</code> characters counting from the start of the string.</p>
+<p>If there are fewer than <code>k</code> characters left, reverse all of them. If there are less than <code>2k</code> but greater than or equal to <code>k</code> characters, then reverse the first <code>k</code> characters and leave the other as original.</p>
+<h2 id="Approach-1"><a href="#Approach-1" class="headerlink" title="Approach"></a>Approach</h2><h3 id="Two-pointers-1"><a href="#Two-pointers-1" class="headerlink" title="Two pointers"></a>Two pointers</h3><ul>
+<li>Traverse <code>s</code>:<ul>
+<li>If there are more than <code>k</code> characters left, reverse <code>k</code> elements; else, reverse all of them</li>
+<li>let <code>i = i + 2k</code>, traverse every <code>2k</code> characters.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">reverseStr</span><span class="params">(String s, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        <span class="type">char</span>[] c = s.toCharArray();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; c.length; i += <span class="number">2</span> * k) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i + k &lt; c.length) &#123;</span><br><span class="line">                swap(c, i, i + k - <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                swap(c, i, c.length - <span class="number">1</span>);</span><br><span class="line">            &#125;          </span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>(c);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">char</span>[] c, <span class="type">int</span> left, <span class="type">int</span> right)</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">            <span class="type">char</span> <span class="variable">temp</span> <span class="operator">=</span> c[left];</span><br><span class="line">            c[left] = c[right];</span><br><span class="line">            c[right] = temp;</span><br><span class="line">            left++;</span><br><span class="line">            right--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">reverseStr</span><span class="params">(String s, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        <span class="type">StringBuffer</span> <span class="variable">result</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuffer</span>();</span><br><span class="line">        <span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (start &lt; s.length()) &#123;</span><br><span class="line">            <span class="type">StringBuffer</span> <span class="variable">temp</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuffer</span>();</span><br><span class="line">            <span class="type">int</span> <span class="variable">firstK</span> <span class="operator">=</span> start + k &lt; s.length() ? start + k : s.length();</span><br><span class="line">            <span class="type">int</span> <span class="variable">secondK</span> <span class="operator">=</span> start + <span class="number">2</span> * k &lt; s.length() ? start + <span class="number">2</span> * k : s.length();</span><br><span class="line"></span><br><span class="line">            temp.append(s.substring(start, firstK));</span><br><span class="line">            result.append(temp.reverse());</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (firstK &lt; secondK)</span><br><span class="line">                result.append(s.substring(firstK, secondK));</span><br><span class="line">            start += <span class="number">2</span> * k;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="剑指-Offer-05-替换空格"><a href="#剑指-Offer-05-替换空格" class="headerlink" title="剑指 Offer 05. 替换空格"></a>剑指 Offer 05. 替换空格</h1><h2 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h2><p>请实现一个函数，把字符串 <code>s</code> 中的每个空格替换成<code>&quot;%20&quot;</code>。</p>
+<h2 id="Approach-2"><a href="#Approach-2" class="headerlink" title="Approach"></a>Approach</h2><h3 id="Two-pointers-2"><a href="#Two-pointers-2" class="headerlink" title="Two pointers"></a>Two pointers</h3><ul>
+<li>Expand the size of the array to the size after replacing each space with “%20”</li>
+<li>Initialize pointer <code>left</code> points to the end of the previous array, <code>right</code> to the end of the expanded array.</li>
+<li>Traverse from <code>left</code>:<ul>
+<li>If <code>s[left]= &#39; &#39;</code>, replace it with “%20”; else let <code>s[left] = s[right]</code></li>
+<li><code>left--, right--</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">replaceSpace</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (s == <span class="literal">null</span> || s.length() == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> s;</span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c: s.toCharArray()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">&#x27; &#x27;</span>)</span><br><span class="line">                sb.append(<span class="string">&quot;  &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> s.length() - <span class="number">1</span>;</span><br><span class="line">        s += sb.toString();</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> s.length() - <span class="number">1</span>;</span><br><span class="line">        <span class="type">char</span>[] ch = s.toCharArray();</span><br><span class="line">        <span class="keyword">while</span> (left &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (ch[left] == <span class="string">&#x27; &#x27;</span>) &#123;</span><br><span class="line">                ch[right--] = <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">                ch[right--] = <span class="string">&#x27;2&#x27;</span>;</span><br><span class="line">                ch[right] = <span class="string">&#x27;%&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                ch[right] = ch[left];</span><br><span class="line">            right--;</span><br><span class="line">            left--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>(ch);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="151-Reverse-Words-in-a-String"><a href="#151-Reverse-Words-in-a-String" class="headerlink" title="151. Reverse Words in a String"></a>151. Reverse Words in a String</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/reverse-words-in-a-string/">https://leetcode.com/problems/reverse-words-in-a-string/</a></p>
+<h2 id="Description-3"><a href="#Description-3" class="headerlink" title="Description"></a>Description</h2><p>Given an input string <code>s</code>, reverse the order of the <strong>words</strong>.</p>
+<p>A <strong>word</strong> is defined as a sequence of non-space characters. The <strong>words</strong> in s will be separated by at least one space.</p>
+<p>Return <em>a string of the words in reverse order concatenated by a single space</em>.</p>
+<p><strong>Note</strong> that <code>s</code> may contain leading or trailing spaces or multiple spaces between two words. The returned string should only have a single space separating the words. Do not include any extra spaces.</p>
+<h2 id="Approach-3"><a href="#Approach-3" class="headerlink" title="Approach"></a>Approach</h2><h3 id="Two-pointers-3"><a href="#Two-pointers-3" class="headerlink" title="Two pointers"></a>Two pointers</h3><ol>
+<li>Remove redundant spaces:<ul>
+<li>Remove the spaces at the start and spaces at the end.</li>
+<li>Remove the redundant spaces between the words:<ul>
+<li>If the previous element of a space is a character, remove it</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Reverse the array<ul>
+<li>Initialize two pointers <code>start</code> and <code>end</code></li>
+<li>Swap start and end, then both pointers move towards the middle at the same time</li>
+<li>Stop when <code>start</code> and <code>end</code> meet.</li>
+</ul>
+</li>
+<li>Reverse each word<ul>
+<li>Initialize two pointers <code>start</code> and <code>end</code></li>
+<li>Traverse the array:<ul>
+<li>Let start points to the <code>start</code> of a word, end points to the <code>end</code> of the word, which is the element before the space.</li>
+<li>Reverse the word, then let <code>start</code> and <code>end</code> points to the next word</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="Solution-3"><a href="#Solution-3" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">reverseWords</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> removeSpace(s);</span><br><span class="line">        reverseString(sb, <span class="number">0</span>, sb.length() - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> reverseEachWord(sb);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> StringBuilder <span class="title function_">removeSpace</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="type">char</span>[] ch = s.toCharArray();</span><br><span class="line">        <span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">end</span> <span class="operator">=</span> s.length() - <span class="number">1</span>;</span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="keyword">while</span> (ch[start] == <span class="string">&#x27; &#x27;</span>)</span><br><span class="line">            start++;</span><br><span class="line">        <span class="keyword">while</span> (ch[end] == <span class="string">&#x27; &#x27;</span>)</span><br><span class="line">            end--;</span><br><span class="line">        <span class="keyword">while</span> (start &lt;= end) &#123;</span><br><span class="line">            <span class="type">char</span> <span class="variable">c</span> <span class="operator">=</span> ch[start];</span><br><span class="line">            <span class="keyword">if</span> (c != <span class="string">&#x27; &#x27;</span> || sb.charAt(sb.length() - <span class="number">1</span>) != <span class="string">&#x27; &#x27;</span>)</span><br><span class="line">                sb.append(c);</span><br><span class="line">            start++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">reverseString</span><span class="params">(StringBuilder sb, <span class="type">int</span> start, <span class="type">int</span> end)</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (start &lt; end) &#123;</span><br><span class="line">            <span class="type">char</span> <span class="variable">temp</span> <span class="operator">=</span> sb.charAt(start);</span><br><span class="line">            sb.setCharAt(start, sb.charAt(end));</span><br><span class="line">            sb.setCharAt(end, temp);</span><br><span class="line">            start++;</span><br><span class="line">            end--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String <span class="title function_">reverseEachWord</span><span class="params">(StringBuilder sb)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">end</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (start &lt; sb.length()) &#123;</span><br><span class="line">            <span class="keyword">while</span> (end &lt; sb.length() &amp;&amp; sb.charAt(end) != <span class="string">&#x27; &#x27;</span>)</span><br><span class="line">                end++;</span><br><span class="line">            reverseString(sb, start, end - <span class="number">1</span>);</span><br><span class="line">            start = end + <span class="number">1</span>;</span><br><span class="line">            end = start + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="剑指Offer58-II-左旋转字符串"><a href="#剑指Offer58-II-左旋转字符串" class="headerlink" title="剑指Offer58-II.左旋转字符串"></a>剑指Offer58-II.左旋转字符串</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/">https://leetcode.cn/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/</a></p>
+<h2 id="Description-4"><a href="#Description-4" class="headerlink" title="Description"></a>Description</h2><p>字符串的左旋转操作是把字符串前面的若干个字符转移到字符串的尾部。请定义一个函数实现字符串左旋转操作的功能。比如，输入字符串”abcdefg”和数字2，该函数将返回左旋转两位得到的结果”cdefgab”。</p>
+<h2 id="Approach-4"><a href="#Approach-4" class="headerlink" title="Approach"></a>Approach</h2><ol>
+<li>Reverse the first n character</li>
+<li>Reverse the remain characters</li>
+<li>Reverse the whole String</li>
+</ol>
+<h2 id="Solution-4"><a href="#Solution-4" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">reverseLeftWords</span><span class="params">(String s, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        StringBuilder sb= <span class="keyword">new</span> <span class="title class_">StringBuilder</span>(s);</span><br><span class="line">        reverseString(sb, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">        reverseString(sb, n, s.length() - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> sb.reverse().toString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">reverseString</span><span class="params">(StringBuilder sb, <span class="type">int</span> start, <span class="type">int</span> end)</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (start &lt; end) &#123;</span><br><span class="line">            <span class="type">char</span> <span class="variable">temp</span> <span class="operator">=</span> sb.charAt(start);</span><br><span class="line">            sb.setCharAt(start, sb.charAt(end));</span><br><span class="line">            sb.setCharAt(end, temp);</span><br><span class="line">            start++;</span><br><span class="line">            end--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/07/17/LeetCode%20454.%204Sum%20II,%20383.%20Ransom%20Note,%2015.%203Sum,%2018.%204Sum/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -882,7 +1021,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
