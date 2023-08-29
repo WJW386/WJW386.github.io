@@ -179,6 +179,119 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/08/14/LeetCode%20860.%20Lemonade%20Change,%20406.%20Queue%20Reconstruction%20by%20Height,%20452.%20Minimum%20Number%20of%20Arrows/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Willow Wu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Willow's Archive">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/14/LeetCode%20860.%20Lemonade%20Change,%20406.%20Queue%20Reconstruction%20by%20Height,%20452.%20Minimum%20Number%20of%20Arrows/" class="post-title-link" itemprop="url">LeetCode | 860. Lemonade Change, 406. Queue Reconstruction by Height, 452. Minimum Number of Arrows to Burst Balloons</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-08-14 23:52:46" itemprop="dateCreated datePublished" datetime="2023-08-14T23:52:46-04:00">2023-08-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-08-17 00:54:33" itemprop="dateModified" datetime="2023-08-17T00:54:33-04:00">2023-08-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="860-Lemonade-Change"><a href="#860-Lemonade-Change" class="headerlink" title="860. Lemonade Change"></a>860. Lemonade Change</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/lemonade-change/">https://leetcode.com/problems/lemonade-change/</a></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>At a lemonade stand, each lemonade costs <code>$5</code>. Customers are standing in a queue to buy from you and order one at a time (in the order specified by bills). Each customer will only buy one lemonade and pay with either a <code>$5</code>, <code>$10</code>, or <code>$20</code> bill. You must provide the correct change to each customer so that the net transaction is that the customer pays <code>$5</code>.</p>
+<p>Note that you do not have any change in hand at first.</p>
+<p>Given an integer array <code>bills</code> where <code>bills[i]</code> is the bill the <code>ith</code> customer pays, return <code>true</code> <em>if you can provide every customer with the correct change, or</em> <code>false</code> <em>otherwise</em>.</p>
+<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><ul>
+<li>Initialize <code>cnt5</code> to save the number of <code>$5</code> bill, <code>cnt10</code> to save the number of <code>$10</code> bill.</li>
+<li>Loop through <code>bills</code>:<ul>
+<li>If the bill equals to 5, add it to <code>cnt5</code>.</li>
+<li>Else if the bill equals to 10. if there remains <code>$5</code> bill (<code>cnt5 &gt; 0</code>), delete 1 bill from <code>cnt5</code>. Else return <code>false</code>.</li>
+<li>Else, if there are at least 1 <code>$10</code> bill and 1 <code>$5</code> bill, delete 1 bill from <code>cnt10</code>  and <code>cnt5</code>. Else if there are more than 3 <code>$5</code> bills, delete 3 bills from <code>cnt5</code>. Else, return <code>false</code>.</li>
+</ul>
+</li>
+<li>If all the bills can be given correct change, return <code>true</code>.</li>
+</ul>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">lemonadeChange</span><span class="params">(<span class="type">int</span>[] bills)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">cnt5</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">cnt10</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> bill: bills) &#123;</span><br><span class="line">            <span class="keyword">if</span> (bill == <span class="number">5</span>)</span><br><span class="line">                cnt5++;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (bill == <span class="number">10</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (cnt5 &gt; <span class="number">0</span>)</span><br><span class="line">                    cnt5--;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                cnt10++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (cnt10 &gt; <span class="number">0</span> &amp;&amp; cnt5 &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    cnt10--;</span><br><span class="line">                    cnt5--;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (cnt5 &gt;= <span class="number">3</span>) &#123;</span><br><span class="line">                    cnt5 -= <span class="number">3</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="406-Queue-Reconstruction-by-Height"><a href="#406-Queue-Reconstruction-by-Height" class="headerlink" title="406. Queue Reconstruction by Height"></a>406. Queue Reconstruction by Height</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/queue-reconstruction-by-height/">https://leetcode.com/problems/queue-reconstruction-by-height/</a></p>
+<h2 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h2><p>You are given an array of people, <code>people</code>, which are the attributes of some people in a queue (not necessarily in order). Each <code>people[i] = [hi, ki]</code> represents the <code>ith</code> person of height <code>hi</code> with exactly <code>ki</code> other people in front who have a height greater than or equal to <code>hi</code>.</p>
+<p>Reconstruct and return <em>the queue that is represented by the input array</em> <code>people</code>. The returned queue should be formatted as an array <code>queue</code>, where <code>queue[j] = [hj, kj]</code> is the attributes of the <code>jth</code> person in the queue (<code>queue[0]</code> is the person at the front of the queue).</p>
+<h2 id="Approach-1"><a href="#Approach-1" class="headerlink" title="Approach"></a>Approach</h2><ul>
+<li>Sort the array in descending order. First compare <code>hi</code>. If the <code>hi</code> are the same, then compare <code>ki</code>.</li>
+<li>Add the person into the list to the <code>kth</code> position.</li>
+</ul>
+<h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[][] reconstructQueue(<span class="type">int</span>[][] people) &#123;</span><br><span class="line">        Arrays.sort(people, (a, b) -&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[<span class="number">0</span>] == b[<span class="number">0</span>])</span><br><span class="line">                <span class="keyword">return</span> a[<span class="number">1</span>] - b[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> b[<span class="number">0</span>] - a[<span class="number">0</span>];</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        List&lt;<span class="type">int</span>[]&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span>[] p: people) </span><br><span class="line">            list.add(p[<span class="number">1</span>], p);</span><br><span class="line">        <span class="keyword">return</span> list.toArray(<span class="keyword">new</span> <span class="title class_">int</span>[people.length][]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="452-Minimum-Number-of-Arrows-to-Burst-Balloons"><a href="#452-Minimum-Number-of-Arrows-to-Burst-Balloons" class="headerlink" title="452. Minimum Number of Arrows to Burst Balloons"></a>452. Minimum Number of Arrows to Burst Balloons</h1><p>List: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/">https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/</a></p>
+<h2 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h2><p>There are some spherical balloons taped onto a flat wall that represents the XY-plane. The balloons are represented as a 2D integer array <code>points</code> where <code>points[i] = [xstart, xend]</code> denotes a balloon whose horizontal diameter stretches between <code>xstart</code> and <code>xend</code>. You do not know the exact y-coordinates of the balloons.</p>
+<p>Arrows can be shot up <strong>directly vertically</strong> (in the positive y-direction) from different points along the x-axis. A balloon with <code>xstart</code> and <code>xend</code> is burst by an arrow shot at <code>x</code> if <code>xstart &lt;= x &lt;= xend</code>. There is <strong>no limit</strong> to the number of arrows that can be shot. A shot arrow keeps traveling up infinitely, bursting any balloons in its path.</p>
+<p>Given the array <code>points</code>, return <em>the <strong>minimum</strong> number of arrows that must be shot to burst all balloons</em>.</p>
+<h2 id="Approach-2"><a href="#Approach-2" class="headerlink" title="Approach"></a>Approach</h2><ul>
+<li>Sort <code>point</code> in ascending order according to <code>xstart</code>.</li>
+<li>Loop through the sorted <code>point</code> from the secoond element:<ul>
+<li>If the start of the element is larger than the end of the previous element, it means it needs one more shot.</li>
+<li>Else, update the end of the element  to be the minimum of its current end point and the end point of the previous balloon.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findMinArrowShots</span><span class="params">(<span class="type">int</span>[][] points)</span> &#123;</span><br><span class="line">        Arrays.sort(points, (a, b) -&gt; Integer.compare(a[<span class="number">0</span>], b[<span class="number">0</span>]));</span><br><span class="line">        <span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; points.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (points[i - <span class="number">1</span>][<span class="number">1</span>] &lt; points[i][<span class="number">0</span>])</span><br><span class="line">                cnt++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                points[i][<span class="number">1</span>] = Math.min(points[i][<span class="number">1</span>], points[i - <span class="number">1</span>][<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/08/13/LeetCode%201005.%20Maximize%20Sum%20Of%20Array%20After%20K%20Negations,%20134.%20Gas%20Station,%20135.%20Candy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1206,133 +1319,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/08/01/LeetCode%20235.%20Lowest%20Common%20Ancestor%20of%20a%20BST,%20701.%20Insert%20into%20a%20BST,%20450.%20Delete%20Node%20in%20a%20BST/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Willow Wu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Willow's Archive">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/08/01/LeetCode%20235.%20Lowest%20Common%20Ancestor%20of%20a%20BST,%20701.%20Insert%20into%20a%20BST,%20450.%20Delete%20Node%20in%20a%20BST/" class="post-title-link" itemprop="url">LeetCode | 235. Lowest Common Ancestor of a Binary Search Tree, 701. Insert into a Binary Search Tree, 450. Delete Node in a BST</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2023-08-01 17:33:38 / Modified: 17:34:45" itemprop="dateCreated datePublished" datetime="2023-08-01T17:33:38-04:00">2023-08-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree"><a href="#235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree" class="headerlink" title="235. Lowest Common Ancestor of a Binary Search Tree"></a>235. Lowest Common Ancestor of a Binary Search Tree</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/">https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/</a></p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a binary search tree (BST), find the lowest common ancestor (LCA) node of two given nodes in the BST.</p>
-<p>According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes <code>p</code> and <code>q</code> as the lowest node in T that has both <code>p</code> and <code>q</code> as descendants (where we allow <strong>a node to be a descendant of itself</strong>).”</p>
-<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><p>The first node whose value in <code>[p.val, q.val]</code> is the LCA.</p>
-<h2 id="Recursion"><a href="#Recursion" class="headerlink" title="Recursion"></a>Recursion</h2><ul>
-<li>If the value of <code>root</code> less than both <code>p</code> and <code>q</code>, call the function on <code>root.right</code> and return.</li>
-<li>Else If the value of <code>root</code> greater than both <code>p</code> and <code>q</code>, call the function on <code>root.left</code> and return.</li>
-<li>Else, return the <code>root</code>.</li>
-</ul>
-<h2 id="Iterartion"><a href="#Iterartion" class="headerlink" title="Iterartion"></a>Iterartion</h2><ul>
-<li>While <code>root</code> is not null:<ul>
-<li>If the value of <code>root</code> less than both <code>p</code> and <code>q</code>, set the right subtree of <code>root</code> to <code>root</code>.</li>
-<li>Else If the value of <code>root</code> greater than both <code>p</code> and <code>q</code>, set the left subtree of <code>root</code> to <code>root</code>.</li>
-<li>Else, return <code>root</code>.</li>
-</ul>
-</li>
-</ul>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Recursion</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> TreeNode <span class="title function_">lowestCommonAncestor</span><span class="params">(TreeNode root, TreeNode p, TreeNode q)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root.val &gt; p.val &amp;&amp; root.val &gt; q.val)</span><br><span class="line">            <span class="keyword">return</span> lowestCommonAncestor(root.left, p, q);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (root.val &lt; p.val &amp;&amp; root.val &lt; q.val) </span><br><span class="line">            <span class="keyword">return</span> lowestCommonAncestor(root.right, p, q);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Iteration</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> TreeNode <span class="title function_">lowestCommonAncestor</span><span class="params">(TreeNode root, TreeNode p, TreeNode q)</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (root != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (root.val &gt; p.val &amp;&amp; root.val &gt; q.val)</span><br><span class="line">                root = root.left;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (root.val &lt; p.val &amp;&amp; root.val &lt; q.val)</span><br><span class="line">                root = root.right;</span><br><span class="line">            <span class="keyword">else</span> </span><br><span class="line">                <span class="keyword">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="701-Insert-into-a-Binary-Search-Tree"><a href="#701-Insert-into-a-Binary-Search-Tree" class="headerlink" title="701. Insert into a Binary Search Tree"></a>701. Insert into a Binary Search Tree</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/insert-into-a-binary-search-tree/">https://leetcode.com/problems/insert-into-a-binary-search-tree/</a></p>
-<h2 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h2><p>You are given the <code>root</code> node of a binary search tree (BST) and a <code>value</code> to insert into the tree. Return <em>the root node of the BST after the insertion</em>. It is <strong>guaranteed</strong> that the new value does not exist in the original BST.</p>
-<p><strong>Notice</strong> that there may exist multiple valid ways for the insertion, as long as the tree remains a BST after insertion. You can return <strong>any of them</strong>.</p>
-<h2 id="Approach-1"><a href="#Approach-1" class="headerlink" title="Approach"></a>Approach</h2><h3 id="Recursion-1"><a href="#Recursion-1" class="headerlink" title="Recursion"></a>Recursion</h3><ul>
-<li>If <code>root</code> is null, which means that the suitable place to insert is found, return the new node with the given <code>val</code>.</li>
-<li>If the value of <code>root</code> less than <code>val</code>, call the function on the right subtree of <code>root</code>.</li>
-<li>Else, call the function on the left subtree of <code>root</code>.</li>
-<li>Return <code>root</code>.</li>
-</ul>
-<h3 id="Iteration"><a href="#Iteration" class="headerlink" title="Iteration"></a>Iteration</h3><ul>
-<li>If <code>root</code> is null, which means the tree is empty, return the new node with the given <code>val</code>.</li>
-<li>Initialize two variables <code>cur</code> as <code>root</code> and <code>pre</code> as null,  to store the current node and previous node respectively.</li>
-<li>While <code>cur</code> is not null:<ul>
-<li>Set <code>cur</code> to <code>pre</code>.</li>
-<li>If the value of <code>cur</code> less than <code>val</code>, set the right subtree of <code>cur</code> to <code>cur</code>.</li>
-<li>If the value of <code>cur</code> greater than <code>val</code>, set the left subtree of <code>cur</code> to <code>cur</code>.</li>
-</ul>
-</li>
-<li>If the value of  <code>pre</code> less than <code>val</code>, set the node with value <code>val</code> as the left subtree of <code>pre</code>‘</li>
-<li>Else, set that as the right subtree of <code>pre</code>.</li>
-</ul>
-<h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// Recursion</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> TreeNode <span class="title function_">insertIntoBST</span><span class="params">(TreeNode root, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">TreeNode</span>(val);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (root.val &lt; val)</span><br><span class="line">            root.right = insertIntoBST(root.right, val);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            root.left = insertIntoBST(root.left, val);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Iteration</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> TreeNode <span class="title function_">insertIntoBST</span><span class="params">(TreeNode root, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">TreeNode</span>(val);</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">cur</span> <span class="operator">=</span> root;</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">pre</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">while</span> (cur != <span class="literal">null</span>) &#123;</span><br><span class="line">            pre = cur;</span><br><span class="line">            <span class="keyword">if</span> (cur.val &gt; val)</span><br><span class="line">                cur = cur.left;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                cur = cur.right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeNode</span>(val);</span><br><span class="line">        <span class="keyword">if</span> (val &lt; pre.val)</span><br><span class="line">            pre.left = node;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            pre.right = node;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="450-Delete-Node-in-a-BST"><a href="#450-Delete-Node-in-a-BST" class="headerlink" title="450. Delete Node in a BST"></a>450. Delete Node in a BST</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/delete-node-in-a-bst/">https://leetcode.com/problems/delete-node-in-a-bst/</a></p>
-<h2 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h2><p>Given a root node reference of a BST and a key, delete the node with the given key in the BST. Return <em>the <strong>root node reference</strong> (possibly updated) of the BST.</em></p>
-<p>Basically, the deletion can be divided into two stages:</p>
-<ul>
-<li>Search for a node to remove.</li>
-<li>If the node is found, delete the node.</li>
-</ul>
-<h2 id="Approach-2"><a href="#Approach-2" class="headerlink" title="Approach"></a>Approach</h2><ul>
-<li>If <code>root</code> is null, return null.</li>
-<li>If the value of <code>root</code> less than key, call the function on the right subtree of <code>root</code>.</li>
-<li>Else if the value of <code>root</code> greater than key, call the function on the left subtree of <code>root</code>.</li>
-<li>Else, if the left subtree is null, return the right subtree. Else if the right subtree is null, return the left subtree. Else, find the leftmost subtree of the right subtree of <code>root</code>, move the left subtree of <code>root</code> to the left subtree of the leftmost subtree of the right subtree of <code>root</code>, return the right subtree of <code>root</code>.</li>
-<li>Return <code>root</code>.</li>
-</ul>
-<h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> TreeNode <span class="title function_">deleteNode</span><span class="params">(TreeNode root, <span class="type">int</span> key)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (root.val &lt; key)</span><br><span class="line">            root.right = deleteNode(root.right, key);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (root.val &gt; key)</span><br><span class="line">            root.left = deleteNode(root.left, key);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (root.left == <span class="literal">null</span>)</span><br><span class="line">                <span class="keyword">return</span> root.right;</span><br><span class="line">            <span class="keyword">if</span> (root.right == <span class="literal">null</span>)</span><br><span class="line">                <span class="keyword">return</span> root.left;</span><br><span class="line">            <span class="type">TreeNode</span> <span class="variable">cur</span> <span class="operator">=</span> root.right;</span><br><span class="line">            <span class="keyword">while</span> (cur.left != <span class="literal">null</span>)</span><br><span class="line">                cur = cur.left;</span><br><span class="line">            cur.left = root.left;</span><br><span class="line">            root = root.right;</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1402,7 +1388,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

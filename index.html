@@ -179,6 +179,86 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/08/28/LeetCode%20139.%20Word%20Break/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Willow Wu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Willow's Archive">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/08/28/LeetCode%20139.%20Word%20Break/" class="post-title-link" itemprop="url">LeetCode | 139. Word Break</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2023-08-28 21:39:04 / Modified: 21:39:56" itemprop="dateCreated datePublished" datetime="2023-08-28T21:39:04-04:00">2023-08-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="139-Word-Break"><a href="#139-Word-Break" class="headerlink" title="139. Word Break"></a>139. Word Break</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/word-break/">https://leetcode.com/problems/word-break/</a></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a string <code>s</code> and a dictionary of strings <code>wordDict</code>, return <code>true</code> if <code>s</code> can be segmented into a space-separated sequence of one or more dictionary words.</p>
+<p><strong>Note</strong> that the same word in the dictionary may be reused multiple times in the segmentation.</p>
+<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><ul>
+<li>Initialize a boolean <code>dp</code> array to keep track of whether the substring ending at index <code>i</code> can be segmented into words from the <code>wordDict</code>.</li>
+<li>Create a HashSet <code>set</code> with <code>wordDict</code> to check if a substring is a valid word.</li>
+<li>Set dp[0] to true, indicating that an empty string can always be segmented.</li>
+<li>Iterate through the string <code>s</code> using a loop with <code>i</code> ranging from <code>1</code> to the length of <code>s</code>. For each <code>i</code>, iterate through another loop with <code>j</code> ranging from <code>0</code> to <code>i</code>. The purpose of this nested loop is to explore different substrings within the string <code>s</code>.<ul>
+<li>Check if the substring from index <code>j</code> to index <code>i</code> is present in the set and if <code>dp[j]</code> is also <code>true</code>. If both conditions are met, it means that the substring from <code>j</code> to <code>i</code> can be segmented, so set <code>dp[i]</code> to <code>true</code>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">wordBreak</span><span class="params">(String s, List&lt;String&gt; wordDict)</span> &#123;</span><br><span class="line">        Set&lt;String&gt; set = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;(wordDict);</span><br><span class="line">        <span class="type">boolean</span>[] dp = <span class="keyword">new</span> <span class="title class_">boolean</span>[s.length() + <span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= s.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; i &amp;&amp; !dp[i]; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (set.contains(s.substring(j, i)) &amp;&amp; dp[j])</span><br><span class="line">                    dp[i] = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[s.length()];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/08/28/LeetCode%20322.%20Coin%20Change,%20279.%20Perfect%20Squares/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1076,119 +1156,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://wjw386.github.io/2023/08/14/LeetCode%20860.%20Lemonade%20Change,%20406.%20Queue%20Reconstruction%20by%20Height,%20452.%20Minimum%20Number%20of%20Arrows/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Willow Wu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Willow's Archive">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/08/14/LeetCode%20860.%20Lemonade%20Change,%20406.%20Queue%20Reconstruction%20by%20Height,%20452.%20Minimum%20Number%20of%20Arrows/" class="post-title-link" itemprop="url">LeetCode | 860. Lemonade Change, 406. Queue Reconstruction by Height, 452. Minimum Number of Arrows to Burst Balloons</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2023-08-14 23:52:46" itemprop="dateCreated datePublished" datetime="2023-08-14T23:52:46-04:00">2023-08-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2023-08-17 00:54:33" itemprop="dateModified" datetime="2023-08-17T00:54:33-04:00">2023-08-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="860-Lemonade-Change"><a href="#860-Lemonade-Change" class="headerlink" title="860. Lemonade Change"></a>860. Lemonade Change</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/lemonade-change/">https://leetcode.com/problems/lemonade-change/</a></p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>At a lemonade stand, each lemonade costs <code>$5</code>. Customers are standing in a queue to buy from you and order one at a time (in the order specified by bills). Each customer will only buy one lemonade and pay with either a <code>$5</code>, <code>$10</code>, or <code>$20</code> bill. You must provide the correct change to each customer so that the net transaction is that the customer pays <code>$5</code>.</p>
-<p>Note that you do not have any change in hand at first.</p>
-<p>Given an integer array <code>bills</code> where <code>bills[i]</code> is the bill the <code>ith</code> customer pays, return <code>true</code> <em>if you can provide every customer with the correct change, or</em> <code>false</code> <em>otherwise</em>.</p>
-<h2 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h2><ul>
-<li>Initialize <code>cnt5</code> to save the number of <code>$5</code> bill, <code>cnt10</code> to save the number of <code>$10</code> bill.</li>
-<li>Loop through <code>bills</code>:<ul>
-<li>If the bill equals to 5, add it to <code>cnt5</code>.</li>
-<li>Else if the bill equals to 10. if there remains <code>$5</code> bill (<code>cnt5 &gt; 0</code>), delete 1 bill from <code>cnt5</code>. Else return <code>false</code>.</li>
-<li>Else, if there are at least 1 <code>$10</code> bill and 1 <code>$5</code> bill, delete 1 bill from <code>cnt10</code>  and <code>cnt5</code>. Else if there are more than 3 <code>$5</code> bills, delete 3 bills from <code>cnt5</code>. Else, return <code>false</code>.</li>
-</ul>
-</li>
-<li>If all the bills can be given correct change, return <code>true</code>.</li>
-</ul>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">lemonadeChange</span><span class="params">(<span class="type">int</span>[] bills)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">cnt5</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">cnt10</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> bill: bills) &#123;</span><br><span class="line">            <span class="keyword">if</span> (bill == <span class="number">5</span>)</span><br><span class="line">                cnt5++;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (bill == <span class="number">10</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (cnt5 &gt; <span class="number">0</span>)</span><br><span class="line">                    cnt5--;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                cnt10++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (cnt10 &gt; <span class="number">0</span> &amp;&amp; cnt5 &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    cnt10--;</span><br><span class="line">                    cnt5--;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (cnt5 &gt;= <span class="number">3</span>) &#123;</span><br><span class="line">                    cnt5 -= <span class="number">3</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="406-Queue-Reconstruction-by-Height"><a href="#406-Queue-Reconstruction-by-Height" class="headerlink" title="406. Queue Reconstruction by Height"></a>406. Queue Reconstruction by Height</h1><p>Link: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/queue-reconstruction-by-height/">https://leetcode.com/problems/queue-reconstruction-by-height/</a></p>
-<h2 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h2><p>You are given an array of people, <code>people</code>, which are the attributes of some people in a queue (not necessarily in order). Each <code>people[i] = [hi, ki]</code> represents the <code>ith</code> person of height <code>hi</code> with exactly <code>ki</code> other people in front who have a height greater than or equal to <code>hi</code>.</p>
-<p>Reconstruct and return <em>the queue that is represented by the input array</em> <code>people</code>. The returned queue should be formatted as an array <code>queue</code>, where <code>queue[j] = [hj, kj]</code> is the attributes of the <code>jth</code> person in the queue (<code>queue[0]</code> is the person at the front of the queue).</p>
-<h2 id="Approach-1"><a href="#Approach-1" class="headerlink" title="Approach"></a>Approach</h2><ul>
-<li>Sort the array in descending order. First compare <code>hi</code>. If the <code>hi</code> are the same, then compare <code>ki</code>.</li>
-<li>Add the person into the list to the <code>kth</code> position.</li>
-</ul>
-<h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[][] reconstructQueue(<span class="type">int</span>[][] people) &#123;</span><br><span class="line">        Arrays.sort(people, (a, b) -&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[<span class="number">0</span>] == b[<span class="number">0</span>])</span><br><span class="line">                <span class="keyword">return</span> a[<span class="number">1</span>] - b[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> b[<span class="number">0</span>] - a[<span class="number">0</span>];</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        List&lt;<span class="type">int</span>[]&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span>[] p: people) </span><br><span class="line">            list.add(p[<span class="number">1</span>], p);</span><br><span class="line">        <span class="keyword">return</span> list.toArray(<span class="keyword">new</span> <span class="title class_">int</span>[people.length][]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="452-Minimum-Number-of-Arrows-to-Burst-Balloons"><a href="#452-Minimum-Number-of-Arrows-to-Burst-Balloons" class="headerlink" title="452. Minimum Number of Arrows to Burst Balloons"></a>452. Minimum Number of Arrows to Burst Balloons</h1><p>List: <a target="_blank" rel="noopener" href="https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/">https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/</a></p>
-<h2 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h2><p>There are some spherical balloons taped onto a flat wall that represents the XY-plane. The balloons are represented as a 2D integer array <code>points</code> where <code>points[i] = [xstart, xend]</code> denotes a balloon whose horizontal diameter stretches between <code>xstart</code> and <code>xend</code>. You do not know the exact y-coordinates of the balloons.</p>
-<p>Arrows can be shot up <strong>directly vertically</strong> (in the positive y-direction) from different points along the x-axis. A balloon with <code>xstart</code> and <code>xend</code> is burst by an arrow shot at <code>x</code> if <code>xstart &lt;= x &lt;= xend</code>. There is <strong>no limit</strong> to the number of arrows that can be shot. A shot arrow keeps traveling up infinitely, bursting any balloons in its path.</p>
-<p>Given the array <code>points</code>, return <em>the <strong>minimum</strong> number of arrows that must be shot to burst all balloons</em>.</p>
-<h2 id="Approach-2"><a href="#Approach-2" class="headerlink" title="Approach"></a>Approach</h2><ul>
-<li>Sort <code>point</code> in ascending order according to <code>xstart</code>.</li>
-<li>Loop through the sorted <code>point</code> from the secoond element:<ul>
-<li>If the start of the element is larger than the end of the previous element, it means it needs one more shot.</li>
-<li>Else, update the end of the element  to be the minimum of its current end point and the end point of the previous balloon.</li>
-</ul>
-</li>
-</ul>
-<h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findMinArrowShots</span><span class="params">(<span class="type">int</span>[][] points)</span> &#123;</span><br><span class="line">        Arrays.sort(points, (a, b) -&gt; Integer.compare(a[<span class="number">0</span>], b[<span class="number">0</span>]));</span><br><span class="line">        <span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; points.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (points[i - <span class="number">1</span>][<span class="number">1</span>] &lt; points[i][<span class="number">0</span>])</span><br><span class="line">                cnt++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                points[i][<span class="number">1</span>] = Math.min(points[i][<span class="number">1</span>], points[i - <span class="number">1</span>][<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1258,7 +1225,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
